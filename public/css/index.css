@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.categories {
+  border: 3px solid #3333335b;
+  margin: 0 10px;
+  border-radius: 5px;
+}
+
+.categories img {
+  width: 125px;
+  height: 100px;
+  border-radius: 5px;
+}
+
+.categories a {
+  color: #333;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.categories h3 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

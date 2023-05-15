@@ -5,21 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gomla Plus Online</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/index.css" />
   </head>
   <body>
-    <div class="flex h-screen items-center justify-center gap-6">
+    <div class="container">
       <% for(var i = 0; i < category.length; i++) { %>
       <div class="categories">
         <a href="<%=category[i].name%>">
-          <img
-            class="w-[100px] h-[75px]"
-            src="<%=category[i].image%>"
-            alt="<%=category[i].name%>"
-          />
-          <h3 class="flex h-[25px] w-full justify-center">
-            <%= category[i].name %>
-          </h3>
+          <img src="<%=category[i].image%>" alt="<%=category[i].name%>" />
+          <h3><%= category[i].name %></h3>
         </a>
       </div>
       <% } %>
