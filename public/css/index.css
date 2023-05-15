@@ -5,13 +5,6 @@
   box-sizing: border-box;
   font-family: Roboto;
 }
-.container {
-  display: grid;
-  place-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  height: 100vh;
-}
 .categories {
   width: 300px;
   height: 175px;
