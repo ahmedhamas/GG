@@ -4,22 +4,27 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #eee;
+}
+
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  flex-wrap: wrap;
+  height: auto;
 }
 
 .categories {
-  border: 3px solid #3333335b;
   margin: 0 10px;
   border-radius: 5px;
+  background: #fff;
 }
 
 .categories img {
-  width: 125px;
-  height: 100px;
+  width: 100px;
+  height: 75px;
   border-radius: 5px;
 }
 
