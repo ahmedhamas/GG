@@ -14,6 +14,7 @@ body {
 }
 
 .container {
+  margin: 20px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,8 +29,8 @@ body {
 }
 
 .categories img {
-  width: 100px;
-  height: 75px;
+  width: 250px;
+  height: 120px;
   border-radius: 5px;
 }
 
@@ -44,4 +45,23 @@ body {
   display: flex;
   font-size: 15px;
   justify-content: center;
+}
+
+@media (max-width: 750px) {
+  .categories img {
+    width: 175px;
+    height: 150px;
+  }
+}
+@media (max-width: 600px) {
+  .categories img {
+    width: 125px;
+    height: 100px;
+  }
+}
+@media (max-width: 450px) {
+  .categories img {
+    width: 100px;
+    height: 75px;
+  }
 }
