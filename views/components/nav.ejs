@@ -24,7 +24,8 @@
     style="
       position: absolute;
       top: 55px;
-      left: -200px;
+      left: 5px;
+      transform: translateX(-105%);
       transition: 0.3s;
       background: #333;
       width: 200px;
@@ -94,4 +95,16 @@
   </ul>
 </nav>
 
-<script></script>
+<script>
+  const MenuBtn = document.getElementById("menu");
+  const MenuBar = document.getElementById("menuBar");
+
+  MenuBtn.addEventListener("click", function () {
+    MenuBar.classList.toggle("active");
+    if (MenuBar.classList.contains("active")) {
+      MenuBar.style.transform = "translateX(5px)";
+    } else {
+      MenuBar.style.transform = "translateX(-105%)";
+    }
+  });
+</script>
