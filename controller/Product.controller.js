@@ -21,8 +21,8 @@ const controller = {
     const { id } = req.params;
     db.query("SELECT * FROM `product` WHERE id = ?", id, (err, result) => {
       if (err) throw err;
-      res.json({
-        data: result,
+      res.render("Product/id", {
+        product: result[0],
       });
     });
   },

@@ -33,9 +33,25 @@ const controller = {
       [name],
       (err, result) => {
         if (err) throw err;
-        res.json({
-          data: result,
+        res.render("Category", {
+          subcategory: result,
           name: name,
+        });
+      }
+    );
+  },
+  getProducts: (req, res) => {
+    const subcategory = req.params.subcategory;
+    const category = req.params.name;
+    db.query(
+      "SELECT id,image,name,name_ar,price FROM `product` WHERE subcategory = ?",
+      [subcategory],
+      (err, result) => {
+        if (err) throw err;
+        res.render("Product", {
+          products: result,
+          subcate: subcategory,
+          cate: category,
         });
       }
     );

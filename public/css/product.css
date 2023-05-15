@@ -10,7 +10,7 @@
 
 body {
   background: #eee;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .container {
@@ -21,27 +21,38 @@ body {
   height: auto;
 }
 
-.categories {
+.Product {
   margin: 10px;
   border-radius: 5px;
   background: #fff;
+  width: 260px;
+  position: relative;
 }
 
-.categories img {
-  width: 100px;
-  height: 75px;
+.Product img {
+  width: 260px;
+  height: 300px;
   border-radius: 5px;
 }
 
-.categories a {
-  color: #333;
+.Product a {
   text-decoration: none;
   text-transform: capitalize;
+  color: #333;
 }
 
-.categories h3 {
+.Product .price {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  border-radius: 50px;
+  padding: 0 5px;
+  font-weight: 700;
+}
+
+.Product .name {
   width: 100%;
   display: flex;
-  font-size: 15px;
+  align-items: center;
   justify-content: center;
 }

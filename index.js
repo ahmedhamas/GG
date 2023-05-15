@@ -1,11 +1,19 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const session = require("express-session");
 
 require("dotenv").config();
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(
+  session({
+    secret: "HVCdH0f#W)j%_dgZquxCW4dIOav]ZJKjFy3#Hv$^WpX?7(gt;JYL4[hxg>>WND",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 
 const corsOptions = {
   origin: "*",
