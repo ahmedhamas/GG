@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gomla Plus Online</title>
     <link rel="stylesheet" href="/css/index.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <%- include('components/nav') %>
     <div class="container">
       <% for(var i = 0; i < category.length; i++) { %>
       <div class="categories">
