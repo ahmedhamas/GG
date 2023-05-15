@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Roboto;
 }
 .container {
   display: grid;
@@ -15,6 +17,7 @@
   height: 175px;
   border-radius: 5px;
   box-shadow: 0 0 3px 3px #3333333d;
+  border: 2px solid #333;
 }
 
 .categories a {
