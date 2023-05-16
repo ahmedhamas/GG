@@ -22,7 +22,7 @@
         <p><%= product.dis %></p>
         <p>Price: <%= product.price %></p>
         <p>In Stock: <%= product.instock %></p>
-        <form action="/add_to_cart" method="post">
+        <form action="/product/add_to_cart" method="post">
           <input type="hidden" name="id" value="<%= product.id %>" />
           <input type="hidden" name="name" value="<%= product.name %>" />
           <input type="hidden" name="price" value="<%= product.price %>" />

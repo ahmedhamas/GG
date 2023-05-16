@@ -1,27 +1,5 @@
 const db = require("../db/index");
 
-//! functiaons {
-
-function isProductInCart(cart, id) {
-  for (let i = 0; i < cart.length; i++) {
-    if (cart[i].id == id) {
-      return true;
-    }
-  }
-  return false;
-}
-
-function calcluteTotal(cart, req) {
-  total = 0;
-  for (let i = 0; i < cart.length; i++) {
-    if (cart[i].price) {
-      total = total + cart[i].price * cart[i].quantity;
-    }
-  }
-}
-
-//! }
-
 const controller = {
   addOne: (req, res) => {
     const { name, image, name_ar } = req.body;
@@ -94,35 +72,12 @@ const controller = {
   getAll: (req, res) => {
     db.query("SELECT * FROM `category`", (err, result) => {
       if (err) throw err;
+      if (!req.session.cart) {
+        req.session.cart = [];
+      }
+      console.log(req.session.cart);
       res.render("index", { category: result });
     });
-  },
-  AddToCart: (req, res) => {
-    const { id, name, price, image, quantity } = req.body;
-    const product = {
-      id: id,
-      name: name,
-      price: price,
-      image: image,
-      quantity: quantity,
-    };
-
-    if (req.session.cart) {
-      var cart = req.session.cart;
-
-      if (isProductInCart(cart, id)) {
-        cart.push(product);
-      }
-    } else {
-      req.session.cart = [product];
-      var cart = req.session.cart;
-    }
-
-    //! calculate total
-    calcluteTotal(cart, req);
-
-    //? return to cart page
-    res.redirect("product/cart");
   },
 };
 

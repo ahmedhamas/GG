@@ -6,7 +6,6 @@ router.get("/", Category.getAll);
 router.get("/:name", Category.getOne);
 router.get("/:name/:subcategory", Category.getProducts);
 router.post("/", Category.addOne);
-router.post("/add_to_cart", Category.AddToCart);
 router.delete("/:id", Category.deleteOne);
 
 module.exports = router;

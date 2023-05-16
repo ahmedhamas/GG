@@ -13,7 +13,7 @@ app.use(
     secret: "HVCdH0f#W)j%_dgZquxCW4dIOav]ZJKjFy3#Hv$^WpX?7(gt;JYL4[hxg>>WND",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true },
+    cookie: { secure: false },
   })
 );
 
