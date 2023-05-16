@@ -13,7 +13,7 @@ app.use(
     secret: "1234567890abcdefghijklmnopqrstuvwxyz",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false },
+    cookie: { secure: true },
   })
 );
 
