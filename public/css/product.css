@@ -100,6 +100,26 @@ body {
   padding: 10px 0;
 }
 
+#Product .addToCart {
+  width: 200px;
+  height: 35px;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border-radius: 5px;
+  border: none;
+  background: #fff;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+#Product .addToCart i {
+  font-size: 25px;
+  margin-left: 10px;
+}
+
 @media (max-width: 600px) {
   #Product {
     flex-direction: column;

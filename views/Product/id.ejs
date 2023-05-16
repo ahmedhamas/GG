@@ -22,6 +22,16 @@
         <p><%= product.dis %></p>
         <p>Price: <%= product.price %></p>
         <p>In Stock: <%= product.instock %></p>
+        <form action="/add_to_cart">
+          <input type="hidden" name="id" value="<%= product.id %>" />
+          <input type="hidden" name="name" value="<%= product.name %>" />
+          <input type="hidden" name="price" value="<%= product.price %>" />
+          <input type="hidden" name="image" value="/image" />
+          <input type="hidden" name="quantity" value="1" />
+          <button class="addToCart" type="submit">
+            Add to cart <i class="bx bxs-cart-add"></i>
+          </button>
+        </form>
       </div>
     </div>
   </body>
