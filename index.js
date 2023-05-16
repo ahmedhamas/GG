@@ -4,28 +4,6 @@ const cors = require("cors");
 const session = require("express-session");
 require("dotenv").config();
 
-//! functiaons {
-
-function isProductInCart(cart, id) {
-  for (let i = 0; i < cart.length; i++) {
-    if (cart[i].id == id) {
-      return true;
-    }
-  }
-  return false;
-}
-
-function calcluteTotal(cart, req) {
-  total = 0;
-  for (let i = 0; i < cart.length; i++) {
-    if (cart[i].price) {
-      total = total + cart[i].price * cart[i].quantity;
-    }
-  }
-}
-
-//! }
-
 //* express use {
 
 app.set("view engine", "ejs");

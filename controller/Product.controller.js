@@ -1,4 +1,3 @@
-const { json } = require("express");
 const db = require("../db/index");
 
 const controller = {
@@ -52,6 +51,11 @@ const controller = {
         });
       }
     );
+  },
+  getCart: (req, res) => {
+    var cart = req.session.cart;
+    var total = req.session.total;
+    res.render("cart.ejs", { cart: cart, total: total });
   },
 };
 
