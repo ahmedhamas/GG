@@ -42,11 +42,8 @@ const controller = {
     db.query("SELECT * FROM `product` WHERE id = ?", id, (err, result) => {
       if (err) throw err;
 
-      const CartLength = req.session.cart.length;
-
       res.render("Product/id", {
         product: result[0],
-        cartL: CartLength,
       });
     });
   },
@@ -81,9 +78,7 @@ const controller = {
     var cart = req.session.cart;
     var total = req.session.total;
 
-    const CartLength = req.session.cart.length;
-
-    res.render("cart.ejs", { cart: cart, total: total, cartL: CartLength });
+    res.render("cart.ejs", { cart: cart, total: total });
   },
   AddToCart: (req, res) => {
     const { id, name, price, image, quantity } = req.body;

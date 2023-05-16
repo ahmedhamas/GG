@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body onload="myFunction()">
     <%- include('components/nav') %>
     <div class="container">
       <% for(var i = 0; i < category.length; i++) { %>
@@ -22,6 +22,16 @@
         </a>
       </div>
       <% } %>
+      <div id="test"></div>
     </div>
+    <script>
+      function myFunction() {
+        localStorage.setItem("hamasa", "hamasa");
+
+        const test = document.getElementById("test");
+
+        test.innerHTML = JSON.stringify(localStorage.getItem("hamasa"));
+      }
+    </script>
   </body>
 </html>
