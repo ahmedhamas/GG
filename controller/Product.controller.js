@@ -41,8 +41,12 @@ const controller = {
     const { id } = req.params;
     db.query("SELECT * FROM `product` WHERE id = ?", id, (err, result) => {
       if (err) throw err;
+
+      const CartLength = req.session.cart.length;
+
       res.render("Product/id", {
         product: result[0],
+        cartL: CartLength,
       });
     });
   },
@@ -76,7 +80,10 @@ const controller = {
   getCart: (req, res) => {
     var cart = req.session.cart;
     var total = req.session.total;
-    res.render("cart.ejs", { cart: cart, total: total });
+
+    const CartLength = req.session.cart.length;
+
+    res.render("cart.ejs", { cart: cart, total: total, cartL: CartLength });
   },
   AddToCart: (req, res) => {
     const { id, name, price, image, quantity } = req.body;
@@ -91,7 +98,7 @@ const controller = {
     if (req.session.cart) {
       var cart = req.session.cart;
 
-      if (isProductInCart(cart, id)) {
+      if (!isProductInCart(cart, id)) {
         cart.push(product);
       }
     } else {
@@ -104,7 +111,6 @@ const controller = {
 
     //? return to cart page
     res.redirect("/product/cart");
-    console.log(req.session.cart);
   },
 };
 

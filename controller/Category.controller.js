@@ -33,9 +33,11 @@ const controller = {
       [name],
       (err, result) => {
         if (err) throw err;
+        const CartLength = req.session.cart.length;
         res.render("Category", {
           subcategory: result,
           name: name,
+          cartL: CartLength,
         });
       }
     );
@@ -48,10 +50,12 @@ const controller = {
       [subcategory],
       (err, result) => {
         if (err) throw err;
+        const CartLength = req.session.cart.length;
         res.render("Product", {
           products: result,
           subcate: subcategory,
           cate: category,
+          cartL: CartLength,
         });
       }
     );
@@ -75,8 +79,8 @@ const controller = {
       if (!req.session.cart) {
         req.session.cart = [];
       }
-      console.log(req.session.cart);
-      res.render("index", { category: result });
+      const CartLength = req.session.cart.length;
+      res.render("index", { category: result, cartL: CartLength });
     });
   },
 };

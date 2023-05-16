@@ -5,10 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Cart</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/index.css" />
   </head>
   <body>
-    <% cart.forEach(function(item) { %>
-    <p><%= item.name %></p>
-    <% }) %>
+    <%- include('components/nav') %>
+    <div class="CartContainer">
+      <% if (cart.length > 0) { %> <% cart.forEach(function(item) { %>
+      <div class="cart">
+        <img src="<%= item.image %>" alt="" />
+        <h3><%= item.name %></h3>
+        <div class="total">
+          <h3><%= item.price %> EGP</h3>
+          <h3><%= total %></h3>
+          <div class="quantity">
+            <button><i class="bx bx-plus"></i></button>
+            <p><%= item.quantity %></p>
+            <button><i class="bx bx-minus"></i></button>
+          </div>
+        </div>
+      </div>
+      <% }) %> <% } %>
+    </div>
   </body>
 </html>
