@@ -39,9 +39,6 @@ const controller = {
   },
   getOne: (req, res) => {
     const { id } = req.params;
-    if (!req.session.cart) {
-      req.session.cart = [];
-    }
     db.query("SELECT * FROM `product` WHERE id = ?", id, (err, result) => {
       if (err) throw err;
 
@@ -81,9 +78,6 @@ const controller = {
     );
   },
   getCart: (req, res) => {
-    if (!req.session.cart) {
-      req.session.cart = [];
-    }
     var cart = req.session.cart;
     var total = req.session.total;
 

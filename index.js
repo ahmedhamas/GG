@@ -10,10 +10,10 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(
   session({
-    secret: "HVCdH0f#W)j%_dgZquxCW4dIOav]ZJKjFy3#Hv$^WpX?7(gt;JYL4[hxg>>WND",
+    secret: "1234567890abcdefghijklmnopqrstuvwxyz",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false, maxAge: 30 * 24 * 60 * 60 * 1000 },
+    cookie: { secure: false },
   })
 );
 
