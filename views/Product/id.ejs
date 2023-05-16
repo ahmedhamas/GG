@@ -13,5 +13,16 @@
   </head>
   <body>
     <%- include('../components/nav') %>
+    <div id="Product">
+      <div class="img">
+        <img src="<%= product.image %>" alt="<%= product.name %>" />
+      </div>
+      <div class="info">
+        <h3><%= product.name %></h3>
+        <p><%= product.dis %></p>
+        <p>Price: <%= product.price %></p>
+        <p>In Stock: <%= product.instock %></p>
+      </div>
+    </div>
   </body>
 </html>
