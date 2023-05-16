@@ -28,6 +28,9 @@ const controller = {
   },
   getOne: (req, res) => {
     const { name } = req.params;
+    if (!req.session.cart) {
+      req.session.cart = [];
+    }
     db.query(
       "SELECT * FROM `subcategory` WHERE `category` = ?",
       [name],
@@ -45,6 +48,9 @@ const controller = {
   getProducts: (req, res) => {
     const subcategory = req.params.subcategory;
     const category = req.params.name;
+    if (!req.session.cart) {
+      req.session.cart = [];
+    }
     db.query(
       "SELECT id,image,name,name_ar,price FROM `product` WHERE subcategory = ?",
       [subcategory],
