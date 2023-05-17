@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
   </head>
-  <body onload="CartFunction()">
+  <body onload="CartFunction(),cartLen()">
     <%- include('components/nav') %>
     <div class="container">
       <% for(var i = 0; i < category.length; i++) { %>
