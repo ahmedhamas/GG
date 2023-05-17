@@ -14,6 +14,8 @@
   <body>
     <%- include('components/nav') %>
     <div id="container"></div>
+    <a href="javascript: reload()">Click to Reload</a>
+    <div id="yourDiv">The content that you want to refresh/reload</div>
     <script>
       let Container = document.getElementById("container");
 
@@ -30,10 +32,14 @@
                   <p>Price: ${item.price} EGP</p>
                   <p>Total: ${item.price * item.quantity} EGP</p>
                 </div>
-                <div class="number-input">
-                  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
-                  <input class="quantity" min="0" name="quantity" value="1" type="number">
-                  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                <div class="quantity">
+                  <button onclick="incQuantity(${item.id}, ${
+            item.quantity + 1
+          })" ><i class='bx bx-plus'></i></button>
+                  <p>${item.quantity}</p>
+                  <button onclick='dicQuantity(${
+                    item.id
+                  })'><i class='bx bx-minus' ></i></button>
                 </div>
           </div>`;
         })
@@ -41,14 +47,29 @@
 
       Container.innerHTML = mappedItems;
 
-      function updateQuantity(productId, quantity) {
+      function incQuantity(productId, quantity) {
         for (let product of cart) {
           if (product.id == productId) {
-            product.quantity = quantity;
+            if (product.instock == product.quantity) {
+              product.quantity != quantity;
+            } else {
+              product.quantity = quantity;
+              location.reload();
+            }
           }
         }
         localStorage.setItem("cart", JSON.stringify(cart));
-        location.reload();
+      }
+      function dicQuantity(productId) {
+        for (let product of cart) {
+          if (product.id == productId) {
+            if (product.quantity !== 1) {
+              product.quantity -= 1;
+              location.reload();
+            }
+          }
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
       }
     </script>
   </body>
