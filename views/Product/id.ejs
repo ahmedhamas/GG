@@ -22,17 +22,45 @@
         <p><%= product.dis %></p>
         <p>Price: <%= product.price %></p>
         <p>In Stock: <%= product.instock %></p>
-        <form action="/product/add_to_cart" method="post">
-          <input type="hidden" name="id" value="<%= product.id %>" />
-          <input type="hidden" name="name" value="<%= product.name %>" />
-          <input type="hidden" name="price" value="<%= product.price %>" />
-          <input type="hidden" name="image" value="<%= product.image %>" />
-          <input type="hidden" name="quantity" value="1" />
-          <button class="addToCart" type="submit">
-            Add to cart <i class="bx bxs-cart-add"></i>
-          </button>
-        </form>
+
+        <button
+          onclick="addItemToCart(parseInt('<%=product.id%>'))"
+          class="addToCart"
+          type="submit"
+        >
+          Add to cart <i class="bx bxs-cart-add"></i>
+        </button>
       </div>
     </div>
+    <script>
+      const id = parseInt("<%= product.id %>");
+      const name = "<%= product.name %>";
+      const instock = parseInt("<%= product.instock %>");
+      const price = parseInt("<%= product.price %>");
+      const image = "<%= product.image %>";
+      const quantity = 1;
+
+      let product = {
+        id: id,
+        name: name,
+        price: price,
+        instock: instock,
+        image: image,
+        quantity: quantity,
+      };
+      function addItemToCart(productId) {
+        productId = product.id;
+        if (cart.length == 0) {
+          cart.push(product);
+        } else {
+          let res = cart.find((element) => element.id == productId);
+          if (res === undefined) {
+            cart.push(product);
+          }
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        location.reload;
+      }
+    </script>
   </body>
 </html>

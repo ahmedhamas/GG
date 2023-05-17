@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
   </head>
-  <body onload="myFunction()">
+  <body onload="CartFunction()">
     <%- include('components/nav') %>
     <div class="container">
       <% for(var i = 0; i < category.length; i++) { %>
@@ -25,12 +25,10 @@
       <div id="test"></div>
     </div>
     <script>
-      function myFunction() {
-        localStorage.setItem("hamasa", "hamasa");
-
-        const test = document.getElementById("test");
-
-        test.innerHTML = JSON.stringify(localStorage.getItem("hamasa"));
+      function CartFunction() {
+        if (!localStorage.getItem("cart")) {
+          localStorage.setItem("cart", "[]");
+        }
       }
     </script>
   </body>
