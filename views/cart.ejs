@@ -11,11 +11,65 @@
     />
     <link rel="stylesheet" href="/css/cart.css" />
   </head>
-  <body onload="cartItems(),cartLen()">
+  <body onload="cartItems(),cartLen(), calContainer()">
     <%- include('components/nav') %>
     <div id="container"></div>
-    <div class="checkoutContainer"></div>
+    <div id="checkoutContainer">
+      <div id="countContainer"></div>
+    </div>
     <script>
+      function calContainer() {
+        function getTotal() {
+          let temp = cart.map(function (item) {
+            return parseFloat(item.price * item.quantity);
+          });
+
+          let sum = temp.reduce(function (prev, next) {
+            return prev + next;
+          }, 0);
+
+          return sum;
+        }
+
+        function getItems() {
+          let temp = cart
+            .map(function (item) {
+              return item.name + "  ";
+            })
+            .join("");
+
+          return temp;
+        }
+        function ShipingPrice() {
+          let shiping = 0;
+          return (shiping = getTotal() * 0.1);
+        }
+
+        if (cart.length) {
+          const countContainer = document.getElementById("countContainer");
+          countContainer.innerHTML = `<p>Total: ${getTotal()}</p> 
+        <p>Items: ( ${getItems()} )</p>
+        <p>Shiping Price: ${ShipingPrice()}</p>`;
+        } else {
+          const countContainer = document.getElementById("countContainer");
+          countContainer.innerHTML = `<p style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      background: #fff;
+      padding: 5px;
+      width: 95%;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: capitalize;
+      border-radius: 5px;
+      ">the cart is empty <a href='/' style='margin-left: 5px;
+  text-decoration: none;
+  color: #2660ff;'> go shoping</a></p>`;
+        }
+      }
       function cartItems() {
         let Container = document.getElementById("container");
 
@@ -57,6 +111,7 @@
             } else {
               product.quantity = quantity;
               cartItems();
+              calContainer();
             }
           }
         }
@@ -68,6 +123,7 @@
             if (product.quantity !== 1) {
               product.quantity -= 1;
               cartItems();
+              calContainer();
             }
           }
         }

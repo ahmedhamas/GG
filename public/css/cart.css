@@ -112,3 +112,18 @@ body {
     margin: 0;
   }
 }
+
+#checkoutContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#countContainer {
+  width: auto;
+  background: #fff;
+  padding: 5px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
