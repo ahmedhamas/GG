@@ -9,26 +9,26 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/cart.css" />
   </head>
   <body>
     <%- include('components/nav') %>
-    <div class="CartContainer">
-      <% if (cart.length > 0) { %> <% cart.forEach(function(item) { %>
-      <div class="cart">
-        <img src="<%= item.image %>" alt="" />
-        <h3><%= item.name %></h3>
-        <div class="total">
-          <h3><%= item.price %> EGP</h3>
-          <h3><%= total %></h3>
-          <div class="quantity">
-            <button><i class="bx bx-plus"></i></button>
-            <p><%= item.quantity %></p>
-            <button><i class="bx bx-minus"></i></button>
-          </div>
-        </div>
-      </div>
-      <% }) %> <% } %>
-    </div>
+    <div id="container"></div>
+    <script>
+      let Container = document.getElementById("container");
+
+      const mappedItems = cart.map((item, index) => {
+        return `<div class="cart" key=${index}>
+                <img src=${item.image} alt="user profile image" />
+                <div class="details">
+                 <p>${item.name}</p>
+                 <p>${item.price}</p>
+                 <p>${item.price * item.quantity}</p>
+               </div>
+          </div>`;
+      });
+
+      Container.innerHTML = mappedItems;
+    </script>
   </body>
 </html>

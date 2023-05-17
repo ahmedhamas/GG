@@ -10,7 +10,7 @@
 
 body {
   background: #eee;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .container {
@@ -71,49 +71,4 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.cart {
-  width: 90%;
-  background: #fff;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.total {
-  display: flex;
-  align-items: center;
-  padding: 0 15px;
-}
-
-.quantity {
-  display: flex;
-  align-items: center;
-  padding: 0 15px;
-}
-
-.quantity button {
-  margin: 0 15px;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  border: none;
-  border-radius: 50px;
-  color: #333;
-  font-size: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.quantity p {
-  margin: 0 15px;
-}
-
-.cart img {
-  width: 150px;
-  margin-left: 5px;
-  padding: 0 15px;
 }
