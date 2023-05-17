@@ -52,12 +52,10 @@
         productId = product.id;
         if (cart.length == 0) {
           cart.push(product);
-          location.reload();
         } else {
           let res = cart.find((element) => element.id == productId);
           if (res === undefined) {
             cart.push(product);
-            location.reload();
           }
         }
         localStorage.setItem("cart", JSON.stringify(cart));

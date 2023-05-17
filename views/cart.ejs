@@ -17,35 +17,38 @@
     <a href="javascript: reload()">Click to Reload</a>
     <div id="yourDiv">The content that you want to refresh/reload</div>
     <script>
-      let Container = document.getElementById("container");
+      function cartItems() {
+        let Container = document.getElementById("container");
 
-      const mappedItems = cart
-        .map((item, index) => {
-          return `
+        const mappedItems = cart
+          .map((item, index) => {
+            return `
           <div class="cart" key=${index}>
                 <img src='${item.image}'>
                 <div class='info'>
                  <a href="/product/${item.id}" ><p>${item.name.substr(
-            0,
-            25
-          )}</p></a>
+              0,
+              25
+            )}</p></a>
                   <p>Price: ${item.price} EGP</p>
                   <p>Total: ${item.price * item.quantity} EGP</p>
                 </div>
                 <div class="quantity">
                   <button onclick="incQuantity(${item.id}, ${
-            item.quantity + 1
-          })" ><i class='bx bx-plus'></i></button>
+              item.quantity + 1
+            })" ><i class='bx bx-plus'></i></button>
                   <p>${item.quantity}</p>
                   <button onclick='dicQuantity(${
                     item.id
                   })'><i class='bx bx-minus' ></i></button>
                 </div>
           </div>`;
-        })
-        .join("");
+          })
+          .join("");
 
-      Container.innerHTML = mappedItems;
+        Container.innerHTML = mappedItems;
+      }
+      const UpdateCartItems = setInterval(cartItems, 60);
 
       function incQuantity(productId, quantity) {
         for (let product of cart) {
@@ -54,7 +57,6 @@
               product.quantity != quantity;
             } else {
               product.quantity = quantity;
-              location.reload();
             }
           }
         }
@@ -65,7 +67,6 @@
           if (product.id == productId) {
             if (product.quantity !== 1) {
               product.quantity -= 1;
-              location.reload();
             }
           }
         }

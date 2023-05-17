@@ -124,18 +124,21 @@
   });
 
   let cart = JSON.parse(localStorage.getItem("cart"));
-  if (cart.length > 0) {
-    CartLength.style.display = "flex";
-    CartLength.style.position = "absolute";
-    CartLength.style.background = "red";
-    CartLength.style.color = "#fff";
-    CartLength.style.padding = "0 7.5px";
-    CartLength.style.borderRadius = "5px";
-    CartLength.style.fontWeight = "700";
-    CartLength.style.top = "-13px";
-    CartLength.style.left = "20px";
-    CartLength.innerHTML = cart.length;
-  } else {
-    CartLength.style.display = "none";
+  function cartLen() {
+    if (cart.length > 0) {
+      CartLength.style.display = "flex";
+      CartLength.style.position = "absolute";
+      CartLength.style.background = "red";
+      CartLength.style.color = "#fff";
+      CartLength.style.padding = "0 7.5px";
+      CartLength.style.borderRadius = "5px";
+      CartLength.style.fontWeight = "700";
+      CartLength.style.top = "-13px";
+      CartLength.style.left = "20px";
+      CartLength.innerHTML = cart.length;
+    } else {
+      CartLength.style.display = "none";
+    }
   }
+  const UpdateCart = setInterval(cartLen, 60);
 </script>
