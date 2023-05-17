@@ -49,6 +49,7 @@ body {
   border-radius: 50px;
   padding: 0 5px;
   font-weight: 700;
+  background: #fff;
 }
 
 .Product .name {
