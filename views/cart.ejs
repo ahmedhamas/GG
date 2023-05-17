@@ -17,18 +17,39 @@
     <script>
       let Container = document.getElementById("container");
 
-      const mappedItems = cart.map((item, index) => {
-        return `<div class="cart" key=${index}>
-                <img src=${item.image} alt="user profile image" />
-                <div class="details">
-                 <p>${item.name}</p>
-                 <p>${item.price}</p>
-                 <p>${item.price * item.quantity}</p>
-               </div>
+      const mappedItems = cart
+        .map((item, index) => {
+          return `
+          <div class="cart" key=${index}>
+                <img src='${item.image}'>
+                <div class='info'>
+                 <a href="/product/${item.id}" ><p>${item.name.substr(
+            0,
+            25
+          )}</p></a>
+                  <p>Price: ${item.price} EGP</p>
+                  <p>Total: ${item.price * item.quantity} EGP</p>
+                </div>
+                <div class="number-input">
+                  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+                  <input class="quantity" min="0" name="quantity" value="1" type="number">
+                  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                </div>
           </div>`;
-      });
+        })
+        .join("");
 
       Container.innerHTML = mappedItems;
+
+      function updateQuantity(productId, quantity) {
+        for (let product of cart) {
+          if (product.id == productId) {
+            product.quantity = quantity;
+          }
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        location.reload();
+      }
     </script>
   </body>
 </html>
