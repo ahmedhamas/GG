@@ -18,6 +18,7 @@
       <div id="countContainer"></div>
     </div>
     <script>
+      let disCount = JSON.parse(localStorage.getItem("disCount"));
       function calContainer() {
         function getTotal() {
           let temp = cart.map(function (item) {
@@ -28,7 +29,7 @@
             return prev + next;
           }, 0);
 
-          return sum;
+          return sum * disCount;
         }
 
         function getItems() {

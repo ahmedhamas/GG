@@ -26,20 +26,6 @@ const controller = {
       }
     );
   },
-  getOne: (req, res) => {
-    const { name } = req.params;
-    db.query(
-      "SELECT id,subcategory,image,name,name_ar,price FROM `product` WHERE `subcategory` = ?",
-      name,
-      (err, result) => {
-        if (err) throw err;
-        res.json({
-          data: result,
-          subcategory: name,
-        });
-      }
-    );
-  },
   deleteOne: (req, res) => {
     const id = req.params;
     db.query(

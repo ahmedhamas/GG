@@ -62,16 +62,10 @@ const controller = {
     );
   },
   getLogin: (req, res) => {
-    res.render("login");
+    res.render("User/login");
   },
-  getOne: (req, res) => {
-    const { token } = req.params;
-    db.query("SELECT * FROM users WHERE token = ?", [token], (err, result) => {
-      if (err) throw err;
-      res.json({
-        data: result,
-      });
-    });
+  getRegister: (req, res) => {
+    res.render("User/register");
   },
   deleteOne: (req, res) => {
     const { id } = req.params;
