@@ -4,15 +4,87 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Register</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/login.css" />
   </head>
-  <body onload="cartLen()">
+  <body>
+    <a href="/user/info/login" class="Back"
+      ><i class="bx bx-left-arrow-alt"></i
+    ></a>
     <div class="container">
-      <form action="/user/login" method="post">
-        <input type="email" name="email" />
-        <input type="password" name="password" />
-        <button>log</button>
+      <div id="message"></div>
+      <form action="/login" method="post" dir="rtl" id="myForm">
+        <img src="/img/logo.png" />
+        <div class="input">
+          <label>الاسم:</label>
+          <input type="text" required name="name" />
+        </div>
+        <div class="input">
+          <label>بريد إلكتروني:</label>
+          <input type="email" required name="email" />
+        </div>
+        <div class="input">
+          <label>كلمة المرور:</label>
+          <input id="pass" type="password" required name="password" />
+        </div>
+        <div class="input">
+          <label>تأكيد كلمة المرور:</label>
+          <input id="pass2" type="password" required name="password2" />
+        </div>
+        <div class="input">
+          <button>تسجيل الدخول</button>
+        </div>
+        <p id="err"></p>
+        <p>
+          لا تملك حسابا حتى الآن ؟
+          <a href="/user/info/register">قم بالتسجيل </a>
+        </p>
       </form>
     </div>
+    <script>
+      const message = document.getElementById("message");
+      const myForm = document.getElementById("myForm");
+      const err = document.getElementById("err");
+      var pass = document.getElementById("pass").value;
+      var pass2 = document.getElementById("pass2").value;
+
+      console.log(pass, pass2);
+      if (pass != pass2) {
+        console.log("تأكيد كلمة المرور غير متطابق");
+        err.innerHTML = "تأكيد كلمة المرور غير متطابق";
+      }
+
+      myForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const searchParams = new URLSearchParams();
+
+        for (const pair of formData) {
+          searchParams.append(pair[0], pair[1]);
+        }
+
+        fetch("http://localhost:3000/register", {
+          method: "post",
+          body: searchParams,
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.success == 0) {
+              message.style.transform = "translateX(0)";
+              message.innerHTML = res.message;
+            } else {
+              location.replace("/");
+            }
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
+      });
+    </script>
   </body>
 </html>

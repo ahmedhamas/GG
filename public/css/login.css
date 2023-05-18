@@ -35,8 +35,7 @@ input:focus {
   align-items: center;
   justify-content: center;
 }
-
-.container form a {
+a {
   color: #0586ff;
 }
 
@@ -55,6 +54,7 @@ input:focus {
   border-radius: 5px;
   padding: 0 2.5px;
   border: none;
+  background: #eee;
 }
 
 .container form .input button {
@@ -88,4 +88,10 @@ input:focus {
   align-items: center;
   justify-content: center;
   transition: 0.3s;
+}
+
+.Back {
+  position: absolute;
+  left: 5px;
+  font-size: 30px;
 }

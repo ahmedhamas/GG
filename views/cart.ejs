@@ -49,8 +49,14 @@
         if (cart.length) {
           const countContainer = document.getElementById("countContainer");
           countContainer.innerHTML = `<p>المجموع: ${getTotal()} ج</p> 
-        <p>منتجات: ( ${getItems()} )</p>
-        <p>سعر الشحن: ${ShipingPrice()} ج</p>`;
+        <p>المنتجات: ( ${getItems()} )</p>
+        <p>سعر الشحن: ${ShipingPrice()} ج</p>
+        <% if (auth) {%>
+        <p><a href='/pay/info/cash_on_delivery'>الدفع عند الاستلام</a></p>
+        <p><a href='/pay/info/with_credit_card'>ببطاقة ائتمان</a></p>
+        <% } else { %> 
+          <p>من فضلك سجل الدخول لمواصلة <a href='/user/info/login'>الشراء</a></p>
+         <% } %> `;
         } else {
           const countContainer = document.getElementById("countContainer");
           countContainer.innerHTML = `<p style="

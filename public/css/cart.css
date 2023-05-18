@@ -54,7 +54,7 @@ input:focus {
   margin: 0 10px;
 }
 
-.info a {
+a {
   text-decoration: none;
   color: #2660ff;
 }

@@ -38,13 +38,32 @@ const controller = {
     );
   },
   getOne: (req, res) => {
+    const auth = req.cookies.Status;
+    const admin = req.cookies.StateM;
     const { id } = req.params;
     db.query("SELECT * FROM `product` WHERE id = ?", id, (err, result) => {
       if (err) throw err;
-
-      res.render("Product/id", {
-        product: result[0],
-      });
+      if (admin !== undefined) {
+        res.render("Product/id", {
+          product: result[0],
+          auth: true,
+          admin: true,
+        });
+      } else {
+        if (auth !== undefined) {
+          res.render("Product/id", {
+            product: result[0],
+            auth: true,
+            admin: false,
+          });
+        } else {
+          res.render("Product/id", {
+            product: result[0],
+            auth: false,
+            admin: false,
+          });
+        }
+      }
     });
   },
   deleteOne: (req, res) => {
@@ -75,7 +94,26 @@ const controller = {
     );
   },
   getCart: (req, res) => {
-    res.render("cart.ejs");
+    const auth = req.cookies.Status;
+    const admin = req.cookies.StateM;
+    if (admin !== undefined) {
+      res.render("cart.ejs", {
+        auth: true,
+        admin: true,
+      });
+    } else {
+      if (auth !== undefined) {
+        res.render("cart.ejs", {
+          auth: true,
+          admin: false,
+        });
+      } else {
+        res.render("cart.ejs", {
+          auth: false,
+          admin: false,
+        });
+      }
+    }
   },
 };
 

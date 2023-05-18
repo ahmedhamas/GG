@@ -11,10 +11,9 @@
     />
     <link rel="stylesheet" href="/css/login.css" />
   </head>
-  <body onload="cartLen()">
-    <%- include('../components/nav') %>
+  <body>
+    <a href="/" class="Back"><i class="bx bx-left-arrow-alt"></i></a>
     <div class="container">
-      <div id="message"></div>
       <form action="/login" method="post" dir="rtl" id="myForm">
         <img src="/img/logo.png" />
         <div class="input">
@@ -28,6 +27,7 @@
         <div class="input">
           <button>تسجيل الدخول</button>
         </div>
+        <p id="err"></p>
         <p>
           لا تملك حسابا حتى الآن ؟
           <a href="/user/info/register">قم بالتسجيل </a>
@@ -35,7 +35,7 @@
       </form>
     </div>
     <script>
-      const message = document.getElementById("message");
+      const message = document.getElementById("err");
       const myForm = document.getElementById("myForm");
 
       myForm.addEventListener("submit", function (e) {
@@ -55,7 +55,11 @@
           .then((res) => res.json())
           .then((res) => {
             if (res.success == 0) {
-              message.style.transform = "translateX(0)";
+              message.style.color = "#fff";
+              message.style.background = "red";
+              message.style.fontSize = "12px";
+              message.style.padding = " 0 2.5px";
+              message.style.borderRadius = "50px";
               message.innerHTML = res.message;
             } else {
               location.replace("/");

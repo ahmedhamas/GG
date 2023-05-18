@@ -115,6 +115,7 @@
     >
       <a href="/" style="color: #fff; text-decoration: none">الصفحة الرئيسية</a>
     </li>
+    <% if (auth) { %>
     <li
       style="
         margin: 15px 0;
@@ -128,6 +129,7 @@
         >تاريخ الطلب</a
       >
     </li>
+    <% } %>
     <li
       style="
         margin: 15px 0;
@@ -163,10 +165,33 @@
         justify-content: center;
       "
     >
+      <% if (auth) { %>
+      <a href="/user/info/logout" style="color: #fff; text-decoration: none"
+        >تسجيل الخروج</a
+      >
+
+      <% } else { %>
       <a href="/user/info/login" style="color: #fff; text-decoration: none"
         >تسجيل الدخول</a
       >
+      <% } %>
     </li>
+    <% if (admin) { %>
+    <li
+      style="
+        margin: 15px 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <a href="/about" style="color: #fff; text-decoration: none"
+        >صفحة الإدارة</a
+      >
+    </li>
+    <% } %>
+
     <li
       style="
         margin: 15px 0;
