@@ -27,24 +27,24 @@ const controller = {
     );
   },
   getOne: (req, res) => {
-    const { name } = req.params;
+    const { category } = req.params;
     db.query(
       "SELECT * FROM `subcategory` WHERE `category` = ?",
-      [name],
+      [category],
       (err, result) => {
         if (err) throw err;
         res.render("Category", {
           subcategory: result,
-          name: name,
+          name: category,
         });
       }
     );
   },
   getProducts: (req, res) => {
     const subcategory = req.params.subcategory;
-    const category = req.params.name;
+    const category = req.params.category;
     db.query(
-      "SELECT id,image,name,name_ar,price FROM `product` WHERE subcategory = ?",
+      "SELECT id,image,name_ar,price FROM `product` WHERE subcategory = ?",
       [subcategory],
       (err, result) => {
         if (err) throw err;

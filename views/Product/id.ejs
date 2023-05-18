@@ -18,23 +18,23 @@
         <img src="<%= product.image %>" alt="<%= product.name %>" />
       </div>
       <div class="info">
-        <h3><%= product.name %></h3>
-        <p><%= product.dis %></p>
-        <p>Price: <%= product.price %> EGP</p>
-        <p>In Stock: <%= product.instock %></p>
+        <h3><%= product.name_ar %></h3>
+        <p><%= product.dis_ar %></p>
+        <p>سعر: <%= product.price %> ج</p>
+        <p>في المخزن: <%= product.instock %></p>
 
         <button
           onclick="addItemToCart(parseInt('<%=product.id%>'))"
           class="addToCart"
           type="submit"
         >
-          Add to cart <i class="bx bxs-cart-add"></i>
+          أضف إلى السلة <i class="bx bxs-cart-add"></i>
         </button>
       </div>
     </div>
     <script>
       const id = parseInt("<%= product.id %>");
-      const name = "<%= product.name %>";
+      const name = "<%= product.name_ar %>";
       const instock = parseInt("<%= product.instock %>");
       const price = parseInt("<%= product.price %>");
       const image = "<%= product.image %>";

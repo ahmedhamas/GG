@@ -11,8 +11,12 @@
 body {
   background: #eee;
   overflow-x: hidden;
+  direction: rtl;
 }
-
+textarea:focus,
+input:focus {
+  outline: none;
+}
 .container {
   margin: 20px 0;
   display: flex;

@@ -75,37 +75,7 @@ const controller = {
     );
   },
   getCart: (req, res) => {
-    var cart = req.session.cart;
-    var total = req.session.total;
-
-    res.render("cart.ejs", { cart: cart, total: total });
-  },
-  AddToCart: (req, res) => {
-    const { id, name, price, image, quantity } = req.body;
-    const product = {
-      id: id,
-      name: name,
-      price: price,
-      image: image,
-      quantity: quantity,
-    };
-
-    if (req.session.cart) {
-      var cart = req.session.cart;
-
-      if (!isProductInCart(cart, id)) {
-        cart.push(product);
-      }
-    } else {
-      req.session.cart = [product];
-      var cart = req.session.cart;
-    }
-
-    //! calculate total
-    calcluteTotal(cart, req);
-
-    //? return to cart page
-    res.redirect("/product/cart");
+    res.render("cart.ejs");
   },
 };
 

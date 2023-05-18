@@ -4,19 +4,87 @@
     height: 50px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 0 5px;
     background: #fff;
+    direction: rtl;
   "
 >
-  <div class="icons">
-    <button id="menu" style="background: none; border: none">
+  <div
+    class="icons"
+    style="
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    "
+  >
+    <button
+      id="menu"
+      style="
+        background: none;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
       <i class="bx bx-menu" style="font-size: 30px"></i>
     </button>
-    <a style="color: #333" href="/search"
-      ><i style="font-size: 30px" class="bx bx-search"></i
-    ></a>
-    <a style="color: #333; position: relative" href="/product/cart"
+    <form
+      action="/product/search"
+      method="post"
+      style="
+        position: relative;
+        width: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <input
+        type="search"
+        name="search"
+        style="
+          width: 100%;
+          border-radius: 50px;
+          border: none;
+          background: #eee;
+          padding: 0 5px;
+          height: 30px;
+          direction: rtl;
+        "
+      />
+      <button
+        type="submit"
+        style="
+          position: absolute;
+          left: 0%;
+          background: red;
+          width: 50px;
+          height: 30px;
+          border-radius: 50px 0 0 50px;
+          cursor: pointer;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 25px;
+          color: #fff;
+        "
+      >
+        <i class="bx bx-search"></i>
+      </button>
+    </form>
+    <a
+      style="
+        color: #333;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+      "
+      href="/cart/show/items"
       ><i style="font-size: 30px" class="bx bxs-cart-alt"></i>
       <span id="cartLength"></span>
     </a>
@@ -26,8 +94,8 @@
     style="
       position: absolute;
       top: 55px;
-      left: 5px;
-      transform: translateX(-105%);
+      right: 5px;
+      transform: translateX(105%);
       transition: 0.3s;
       background: #333;
       width: 200px;
@@ -45,7 +113,7 @@
         justify-content: center;
       "
     >
-      <a href="/" style="color: #fff; text-decoration: none">Home</a>
+      <a href="/" style="color: #fff; text-decoration: none">الصفحة الرئيسية</a>
     </li>
     <li
       style="
@@ -57,7 +125,7 @@
       "
     >
       <a href="/user/oh" style="color: #fff; text-decoration: none"
-        >Order History</a
+        >تاريخ الطلب</a
       >
     </li>
     <li
@@ -70,7 +138,7 @@
       "
     >
       <a href="/contact_us" style="color: #fff; text-decoration: none"
-        >Contact Us</a
+        >اتصل بنا</a
       >
     </li>
     <li
@@ -82,7 +150,9 @@
         justify-content: center;
       "
     >
-      <a href="/about" style="color: #fff; text-decoration: none">About</a>
+      <a href="/about" style="color: #fff; text-decoration: none"
+        >معلومات عنا</a
+      >
     </li>
     <li
       style="
@@ -93,7 +163,9 @@
         justify-content: center;
       "
     >
-      <a href="/user" style="color: #fff; text-decoration: none">Login</a>
+      <a href="/user/info/login" style="color: #fff; text-decoration: none"
+        >تسجيل الدخول</a
+      >
     </li>
     <li
       style="
@@ -118,9 +190,9 @@
   MenuBtn.addEventListener("click", function () {
     MenuBar.classList.toggle("active");
     if (MenuBar.classList.contains("active")) {
-      MenuBar.style.transform = "translateX(5px)";
+      MenuBar.style.transform = "translateX(-5px)";
     } else {
-      MenuBar.style.transform = "translateX(-105%)";
+      MenuBar.style.transform = "translateX(105%)";
     }
   });
 
@@ -131,10 +203,13 @@
       CartLength.style.position = "absolute";
       CartLength.style.background = "red";
       CartLength.style.color = "#fff";
-      CartLength.style.padding = "0 7.5px";
+      CartLength.style.width = "20px";
+      CartLength.style.height = "25px";
       CartLength.style.borderRadius = "5px";
       CartLength.style.fontWeight = "700";
-      CartLength.style.top = "-13px";
+      CartLength.style.top = "-7.5px";
+      CartLength.style.alignItems = "center";
+      CartLength.style.justifyContent = "center";
       CartLength.style.left = "20px";
       CartLength.innerHTML = cart.length;
     } else {

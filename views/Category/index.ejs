@@ -16,9 +16,12 @@
     <div class="container">
       <% for(var i = 0; i < subcategory.length; i++) { %>
       <div class="categories">
-        <a href="<%= name %>/<%=subcategory[i].name%>">
-          <img src="<%=subcategory[i].image%>" alt="<%=subcategory[i].name%>" />
-          <h3><%= subcategory[i].name %></h3>
+        <a href="<%= name %>/<%=subcategory[i].name_ar%>">
+          <img
+            src="<%=subcategory[i].image%>"
+            alt="<%=subcategory[i].name_ar%>"
+          />
+          <h3><%= subcategory[i].name_ar %></h3>
         </a>
       </div>
       <% } %>

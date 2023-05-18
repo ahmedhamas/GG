@@ -38,31 +38,20 @@ const controller = {
       (err, result) => {
         if (err) throw err;
         if (result.length > 0) {
-          const token = crypto
-            .createHmac("sha256", result[0].email)
-            .digest("hex");
-          const mangerToken = crypto
-            .createHmac("sha256", result[0].isManger.toString())
-            .digest("hex");
-          const stuffToken = crypto
-            .createHmac("sha256", result[0].isStuff.toString())
-            .digest("hex");
           res.json({
             success: 1,
-            token: token,
-            manger: mangerToken,
-            stuff: stuffToken,
           });
         } else {
           res.json({
             success: 0,
+            message: "لا يمكن تسجيل الدخول بالمعلومات المقدمة",
           });
         }
       }
     );
   },
   getLogin: (req, res) => {
-    res.render("User/login");
+    res.render("User/login.ejs");
   },
   getRegister: (req, res) => {
     res.render("User/register");

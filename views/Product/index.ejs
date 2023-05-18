@@ -16,11 +16,14 @@
     <div class="container">
       <% for(var i = 0; i < products.length; i++) { %>
       <div class="Product">
-        <a href="/product/<%= products[i].id %>">
-          <img src="<%= products[i].image %>" alt="<%= products[i].name %>" />
+        <a href="/product/show/<%= products[i].id %>">
+          <img
+            src="<%= products[i].image %>"
+            alt="<%= products[i].name_ar %>"
+          />
           <div class="body">
-            <p class="price"><%= products[i].price %> EGP</p>
-            <p class="name"><%= products[i].name %></p>
+            <p class="price"><%= products[i].price %> ج</p>
+            <p class="name"><%= products[i].name_ar %></p>
           </div></a
         >
       </div>

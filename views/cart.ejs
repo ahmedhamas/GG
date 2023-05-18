@@ -48,9 +48,9 @@
 
         if (cart.length) {
           const countContainer = document.getElementById("countContainer");
-          countContainer.innerHTML = `<p>Total: ${getTotal()}</p> 
+          countContainer.innerHTML = `<p>Total: ${getTotal()} EGP</p> 
         <p>Items: ( ${getItems()} )</p>
-        <p>Shiping Price: ${ShipingPrice()}</p>`;
+        <p>Shiping Price: ${ShipingPrice()} EGP</p>`;
         } else {
           const countContainer = document.getElementById("countContainer");
           countContainer.innerHTML = `<p style="
@@ -84,8 +84,8 @@
               0,
               25
             )}</p></a>
-                  <p>${item.price} EGP</p>
-                  <p>${item.price * item.quantity} EGP</p>
+                  <p>${item.price} ج</p>
+                  <p>${item.price * item.quantity} ج</p>
                 </div>
                 <div class="quantity">
                   <button onclick="incQuantity(${item.id}, ${
