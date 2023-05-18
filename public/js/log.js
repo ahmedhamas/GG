@@ -1,3 +1,6 @@
+if (localStorage.getItem("Token") !== "noToken") {
+  location.replace("/");
+}
 const message = document.getElementById("err");
 const myForm = document.getElementById("myForm");
 
@@ -25,6 +28,8 @@ myForm.addEventListener("submit", function (e) {
         message.style.borderRadius = "50px";
         message.innerHTML = res.message;
       } else {
+        localStorage.setItem("Token", res.user);
+        localStorage.setItem("State", res.StateM);
         location.replace("/");
       }
     })
