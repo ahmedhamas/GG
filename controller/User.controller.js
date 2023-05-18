@@ -33,11 +33,13 @@ const controller = {
     const { email, password } = req.body;
     const pass = crypto.createHmac("sha256", password).digest("hex");
     db.query(
-      "SELECT email,isManger,isStuff FROM `users` WHERE (`email`, `password`) = (?, ?)",
+      "SELECT id,isManger FROM `users` WHERE (`email`, `password`) = (?, ?)",
       [email, pass],
       (err, result) => {
         if (err) throw err;
         if (result.length > 0) {
+          res.cookie("Status", result[0].id, { maxAge: 31556952000 });
+          res.cookie("StateM", result[0].isManger, { maxAge: 31556952000 });
           res.json({
             success: 1,
           });
@@ -51,10 +53,20 @@ const controller = {
     );
   },
   getLogin: (req, res) => {
-    res.render("User/login.ejs");
+    const auth = req.cookies.Status;
+    if (auth !== undefined) {
+      res.redirect("/");
+    } else {
+      res.render("User/login.ejs");
+    }
   },
   getRegister: (req, res) => {
-    res.render("User/register");
+    const auth = req.cookies.Status;
+    if (auth !== undefined) {
+      res.redirect("/");
+    } else {
+      res.render("User/register");
+    }
   },
   deleteOne: (req, res) => {
     const { id } = req.params;
