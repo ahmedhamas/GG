@@ -16,8 +16,7 @@
       ><i class="bx bx-left-arrow-alt"></i
     ></a>
     <div class="container">
-      <div id="message"></div>
-      <form action="/login" method="post" dir="rtl" id="myForm">
+      <form dir="rtl" id="myForm">
         <img src="/img/logo.png" />
         <div class="input">
           <label>الاسم:</label>
@@ -39,24 +38,12 @@
           <button>تسجيل الدخول</button>
         </div>
         <p id="err"></p>
-        <p>
-          لا تملك حسابا حتى الآن ؟
-          <a href="/user/info/register">قم بالتسجيل </a>
-        </p>
+        <p>لديك حساب ؟ قم ب<a href="/user/info/register">تسجيل الدخول</a></p>
       </form>
     </div>
     <script>
-      const message = document.getElementById("message");
       const myForm = document.getElementById("myForm");
-      const err = document.getElementById("err");
-      var pass = document.getElementById("pass").value;
-      var pass2 = document.getElementById("pass2").value;
-
-      console.log(pass, pass2);
-      if (pass != pass2) {
-        console.log("تأكيد كلمة المرور غير متطابق");
-        err.innerHTML = "تأكيد كلمة المرور غير متطابق";
-      }
+      const message = document.getElementById("err");
 
       myForm.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -75,7 +62,11 @@
           .then((res) => res.json())
           .then((res) => {
             if (res.success == 0) {
-              message.style.transform = "translateX(0)";
+              message.style.color = "#fff";
+              message.style.background = "red";
+              message.style.fontSize = "12px";
+              message.style.padding = " 0 2.5px";
+              message.style.borderRadius = "50px";
               message.innerHTML = res.message;
             } else {
               location.replace("/");
