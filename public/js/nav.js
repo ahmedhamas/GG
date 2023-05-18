@@ -32,3 +32,166 @@ function cartLen() {
     CartLength.style.display = "none";
   }
 }
+
+if (localStorage.getItem("Token") === "noToken") {
+  MenuBar.innerHTML = `    <li
+  style="
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <a href="/" style="color: #fff; text-decoration: none">الصفحة الرئيسية</a>
+</li>
+<li
+  style="
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <a href="/contact_us" style="color: #fff; text-decoration: none"
+    >اتصل بنا</a
+  >
+</li>
+<li
+  style="
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <a href="/about" style="color: #fff; text-decoration: none"
+    >معلومات عنا</a
+  >
+</li>
+<li
+  style="
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <a href="/user/info/login" style="color: #fff; text-decoration: none"
+    >تسجيل الدخول</a
+  >
+</li>
+<li
+  style="
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <a href="/"><img src="/img/logo.png" style="width: 100%" /></a>
+</li>`;
+} else {
+  MenuBar.innerHTML = `    <li
+  style="
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <a href="/" style="color: #fff; text-decoration: none">الصفحة الرئيسية</a>
+</li>
+<li
+  style="
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <a href="/contact_us" style="color: #fff; text-decoration: none"
+    >اتصل بنا</a
+  >
+</li>
+<li
+  style="
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <a href="/about" style="color: #fff; text-decoration: none"
+    >معلومات عنا</a
+  >
+</li>
+<li
+  style="
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
+>
+<button onclick='logout()' style="color: #fff;   background: none;
+cursor: pointer;  border: none; font-size:15px;"
+  >تسجيل خروج</button
+>
+</li>
+<li
+  style="
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
+><a href="/user/info/o_h" style="color: #fff; text-decoration: none"
+>سجل الطلبات</a
+>
+</li>
+<li
+  style="
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
+>
+  <a href="/"><img src="/img/logo.png" style="width: 100%" /></a>
+</li>
+<li
+id="adPage"
+style="
+  margin: 15px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+"
+>
+</li>`;
+}
+if (
+  localStorage.getItem("State") ===
+  "49f41477fa1bfc3b4792d5233b6a659f4bc1772692e9d5fe7db0624a300652eb"
+) {
+  const adPage = document.getElementById("adPage");
+  adPage.innerHTML = `<a href='/user/info/admin' style="color: #fff; text-decoration: none">صفحة الإدارة</a>`;
+}
+
+function logout() {
+  localStorage.setItem("Token", "noToken");
+  localStorage.setItem("State", "noState");
+  location.replace("/");
+}

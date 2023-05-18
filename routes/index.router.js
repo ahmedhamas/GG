@@ -11,7 +11,6 @@ router.get("/product/show/:id", ProductController.getOne);
 router.get("/cart/show/items", ProductController.getCart);
 router.get("/user/info/login", UserController.getLogin);
 router.get("/user/info/register", UserController.getRegister);
-router.get("/user/info/logout", UserController.Logout);
 router.post("/login", UserController.Login);
 router.post("/register", UserController.Register);
 

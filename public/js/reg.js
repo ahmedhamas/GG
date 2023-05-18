@@ -1,3 +1,6 @@
+if (localStorage.getItem("Token") !== "noToken") {
+  location.replace("/");
+}
 const myForm = document.getElementById("myForm");
 const message = document.getElementById("err");
 

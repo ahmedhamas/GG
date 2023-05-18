@@ -45,11 +45,14 @@ const controller = {
       [email, pass],
       (err, result) => {
         if (err) throw err;
+        const StateM = crypto
+          .createHmac("sha256", result[0].isManger.toString())
+          .digest("hex");
         if (result.length > 0) {
-          res.cookie("Status", result[0].id, { maxAge: 31556952000 });
-          res.cookie("StateM", result[0].isManger, { maxAge: 31556952000 });
           res.json({
             success: 1,
+            user: result[0].id,
+            StateM: StateM,
           });
         } else {
           res.json({
@@ -61,30 +64,10 @@ const controller = {
     );
   },
   getLogin: (req, res) => {
-    const auth = req.cookies.Status;
-    if (auth !== undefined) {
-      res.redirect("/");
-    } else {
-      res.render("User/login.ejs");
-    }
+    res.render("User/login.ejs");
   },
   getRegister: (req, res) => {
-    const auth = req.cookies.Status;
-    if (auth !== undefined) {
-      res.redirect("/");
-    } else {
-      res.render("User/register");
-    }
-  },
-  Logout: (req, res) => {
-    const auth = req.cookies.Status;
-    if (auth !== undefined) {
-      res.clearCookie("StateM");
-      res.clearCookie("Status");
-      res.redirect("/user/info/login");
-    } else {
-      res.redirect("/");
-    }
+    res.render("User/register");
   },
   deleteOne: (req, res) => {
     const { id } = req.params;
