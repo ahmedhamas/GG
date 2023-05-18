@@ -50,8 +50,8 @@ input:focus {
   position: absolute;
   top: 5px;
   right: 10px;
-  border-radius: 50px;
-  padding: 0 5px;
+  border-radius: 5px;
+  padding: 0 10px;
   font-weight: 700;
   background: #fff;
 }

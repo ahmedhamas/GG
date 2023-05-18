@@ -131,3 +131,17 @@ input:focus {
   margin: 10px 0;
   border-radius: 5px;
 }
+
+.removeBtn {
+  width: 30px;
+  height: 30px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border-radius: 50px;
+  border: none;
+  color: #a8a8a8;
+  cursor: pointer;
+}

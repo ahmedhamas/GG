@@ -48,9 +48,9 @@
 
         if (cart.length) {
           const countContainer = document.getElementById("countContainer");
-          countContainer.innerHTML = `<p>Total: ${getTotal()} EGP</p> 
-        <p>Items: ( ${getItems()} )</p>
-        <p>Shiping Price: ${ShipingPrice()} EGP</p>`;
+          countContainer.innerHTML = `<p>المجموع: ${getTotal()} ج</p> 
+        <p>منتجات: ( ${getItems()} )</p>
+        <p>سعر الشحن: ${ShipingPrice()} ج</p>`;
         } else {
           const countContainer = document.getElementById("countContainer");
           countContainer.innerHTML = `<p style="
@@ -66,9 +66,9 @@
       justify-content: center;
       text-transform: capitalize;
       border-radius: 5px;
-      ">the cart is empty <a href='/' style='margin-left: 5px;
+      ">عربة التسوق فارغة <a href='/' style='margin-left: 5px;
   text-decoration: none;
-  color: #2660ff;'> go shoping</a></p>`;
+  color: #2660ff;'> اذهب للتسوق</a> </p>`;
         }
       }
       function cartItems() {
@@ -96,14 +96,20 @@
                     item.id
                   })'><i class='bx bx-minus' ></i></button>
                 </div>
-                <button></button>
+                <button onclick='removeItemFormCart(${
+                  item.id
+                })' class='removeBtn'><i class='bx bxs-x-circle'></i></button>
           </div>`;
           })
           .join("");
 
         Container.innerHTML = mappedItems;
       }
-
+      function removeItemFormCart(productId) {
+        let temp = cart.filter((item) => item.id != productId);
+        localStorage.setItem("cart", JSON.stringify(temp));
+        location.reload();
+      }
       function incQuantity(productId, quantity) {
         for (let product of cart) {
           if (product.id == productId) {
