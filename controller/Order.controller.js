@@ -39,6 +39,9 @@ const controller = {
       }
     );
   },
+  getSuccess: (req, res) => {
+    res.render("Checkout/success");
+  },
   getOne: (req, res) => {
     const token = req.params;
     db.query(

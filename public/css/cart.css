@@ -125,7 +125,8 @@ a {
 }
 
 #countContainer {
-  width: auto;
+  min-width: 280px;
+  max-width: 350px;
   background: #fff;
   padding: 5px;
   margin: 10px 0;

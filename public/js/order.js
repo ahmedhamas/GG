@@ -1,4 +1,4 @@
-if (localStorage.getItem("Token") !== "noToken") {
+if (localStorage.getItem("Token") === "noToken") {
   location.replace("/");
 }
 let disCount = JSON.parse(localStorage.getItem("disCount"));
@@ -114,7 +114,7 @@ myForm.addEventListener("submit", function (e) {
             searchParams.append(pair[0], pair[1], pair[2]);
           }
 
-          fetch("http://localhost:3000/orderItem", {
+          fetch("http://localhost:3000/pay/info/success", {
             method: "post",
             body: searchParams,
           }).then(console.log("ok"));
