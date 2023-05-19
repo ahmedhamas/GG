@@ -3,13 +3,15 @@ const { v4: uuidv4 } = require("uuid");
 
 const controller = {
   addOne: (req, res) => {
-    const { city, address, phone, phone2, user, total, date } = req.body;
+    const { city, address, phone, phone2, user, total } = req.body;
     const id = uuidv4();
+    const date = new Date().toISOString().slice(0, 19).replace("T", " ");
+    console.log();
     db.query("SELECT * FROM users WHERE id = ?", [user], (err, result) => {
       if (err) throw err;
       if (result.length > 0) {
         db.query(
-          "INSERT INTO `orders` (`id`, `user`, `City`, `Address`, `phone`, `phone2`, `total`,`date`) VALUES (?, ?, ?, ?, ?, ?, ?)",
+          "INSERT INTO `orders` (`id`, `user`, `City`, `Address`, `phone`, `phone2`, `total`,`date`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
           [id, user, city, address, phone, phone2, total, date],
           (err, result) => {
             if (err) throw err;
@@ -17,7 +19,6 @@ const controller = {
               success: 1,
               orderId: id,
             });
-            console.log(result);
           }
         );
       } else {
@@ -41,6 +42,9 @@ const controller = {
   },
   getSuccess: (req, res) => {
     res.render("Checkout/success");
+  },
+  getOrderHistory: (req, res) => {
+    res.render("Checkout/orderhistory");
   },
   getOne: (req, res) => {
     const token = req.params;

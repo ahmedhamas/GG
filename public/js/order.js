@@ -79,20 +79,15 @@ myForm.addEventListener("submit", function (e) {
   let token = JSON.stringify(localStorage.getItem("Token"));
 
   const formData = new FormData(this);
-
   formData.append("user", JSON.parse(token));
   formData.append("total", getTotal() + ShipingPrice());
-  formData.append(
-    "date",
-    new Date().toISOString().slice(0, 19).replace("T", " ")
-  );
   const searchParams = new URLSearchParams();
 
   for (const pair of formData) {
     searchParams.append(pair[0], pair[1]);
   }
   console.log(searchParams);
-  fetch("https://different-tunic-bull.cyclic.app/order", {
+  fetch("http://localhost:3000/order", {
     method: "post",
     body: searchParams,
   })
@@ -118,13 +113,13 @@ myForm.addEventListener("submit", function (e) {
             searchParams.append(pair[0], pair[1], pair[2]);
           }
 
-          fetch("http://localhost:3000/pay/info/success", {
+          fetch("http://localhost:3000/orderItem", {
             method: "post",
             body: searchParams,
           }).then(console.log("ok"));
         });
         localStorage.setItem("cart", "[]");
-        location.replace("/");
+        location.replace("/pay/info/success");
       }
     })
     .catch(function (error) {

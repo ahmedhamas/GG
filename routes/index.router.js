@@ -15,6 +15,7 @@ router.get("/user/info/login", UserController.getLogin);
 router.get("/user/info/register", UserController.getRegister);
 router.get("/pay/info/cash_on_delivery", OrderController.getCash);
 router.get("/pay/info/success", OrderController.getSuccess);
+router.get("/user/info/o_h", OrderController.getOrderHistory);
 //? }
 //? POST {
 router.post("/login", UserController.Login);
