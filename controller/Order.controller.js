@@ -1,26 +1,43 @@
 const db = require("../db/index");
+const { v4: uuidv4 } = require("uuid");
 
 const controller = {
   addOne: (req, res) => {
-    const { name, email, password } = req.body;
-    db.query("SELECT * FROM user WHERE email = ?", [email], (err, result) => {
+    const { city, address, phone, phone2, user, total } = req.body;
+    const id = uuidv4();
+    db.query("SELECT * FROM users WHERE id = ?", [user], (err, result) => {
       if (err) throw err;
       if (result.length > 0) {
-        res.json({ message: "sorry the account is already made" });
-      } else {
         db.query(
-          "INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES (?, ?, ?, ?)",
-          [id, name, email, password],
+          "INSERT INTO `orders` (`id`, `user`, `City`, `Address`, `phone`, `phone2`, `total`) VALUES (?, ?, ?, ?, ?, ?, ?)",
+          [id, user, city, address, phone, phone2, total],
           (err, result) => {
             if (err) throw err;
             res.json({
-              data: result,
-              message: "account has been made successfully",
+              success: 1,
+              orderId: id,
             });
+            console.log(result);
           }
         );
+      } else {
+        res.json({
+          success: 0,
+        });
       }
     });
+  },
+  addItems: (req, res) => {
+    const { product, order, quantity } = req.body;
+    db.query(
+      "INSERT INTO `orderitem` (`product`, `orders`, `quantity`) VALUES (?, ?, ?)",
+      [product, order, quantity],
+      (err, result) => {
+        res.json({
+          success: 1,
+        });
+      }
+    );
   },
   getOne: (req, res) => {
     const token = req.params;
@@ -62,20 +79,8 @@ const controller = {
       });
     });
   },
-  updateOne: (req, res) => {
-    const selectedId = req.params;
-    const { id, name, email, password, isManger, isStuff, token } = req.body;
-    db.query(
-      "UPDATE `users` SET `id` = ?, `name` = ?, `email` = ?, `password` = ?, `isManger` = ?, `isStuff` = ?, `token` = ? WHERE `users`.`id` = ?"[
-        (id, name, email, password, isManger, isStuff, token, selectedId)
-      ],
-      (err, result) => {
-        if (err) throw err;
-        res.json({
-          message: selectedId + "has been updated",
-        });
-      }
-    );
+  getCash: (req, res) => {
+    res.render("Checkout/cash.ejs");
   },
 };
 

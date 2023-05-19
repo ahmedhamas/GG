@@ -145,3 +145,18 @@ a {
   color: #a8a8a8;
   cursor: pointer;
 }
+
+.checkoutBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  background: #333;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+.checkoutBtn a {
+  text-decoration: none;
+  color: #fff;
+}
