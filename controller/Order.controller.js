@@ -3,14 +3,14 @@ const { v4: uuidv4 } = require("uuid");
 
 const controller = {
   addOne: (req, res) => {
-    const { city, address, phone, phone2, user, total } = req.body;
+    const { city, address, phone, phone2, user, total, date } = req.body;
     const id = uuidv4();
     db.query("SELECT * FROM users WHERE id = ?", [user], (err, result) => {
       if (err) throw err;
       if (result.length > 0) {
         db.query(
-          "INSERT INTO `orders` (`id`, `user`, `City`, `Address`, `phone`, `phone2`, `total`) VALUES (?, ?, ?, ?, ?, ?, ?)",
-          [id, user, city, address, phone, phone2, total],
+          "INSERT INTO `orders` (`id`, `user`, `City`, `Address`, `phone`, `phone2`, `total`,`date`) VALUES (?, ?, ?, ?, ?, ?, ?)",
+          [id, user, city, address, phone, phone2, total, date],
           (err, result) => {
             if (err) throw err;
             res.json({

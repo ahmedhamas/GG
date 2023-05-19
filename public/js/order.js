@@ -60,8 +60,7 @@ function calContainer() {
 const myForm = document.getElementById("order");
 
 function ShipingPrice() {
-  let shiping = 0;
-  return (shiping = getTotal() * 0.1);
+  return getTotal() * 0.1;
 }
 function getTotal() {
   let temp = cart.map(function (item) {
@@ -83,12 +82,14 @@ myForm.addEventListener("submit", function (e) {
 
   formData.append("user", JSON.parse(token));
   formData.append("total", getTotal() + ShipingPrice());
+  formData.append("date", new Date());
   const searchParams = new URLSearchParams();
 
   for (const pair of formData) {
     searchParams.append(pair[0], pair[1]);
   }
-  fetch("http://localhost:3000/order", {
+  console.log(searchParams);
+  fetch("https://different-tunic-bull.cyclic.app/order", {
     method: "post",
     body: searchParams,
   })
