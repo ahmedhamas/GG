@@ -82,7 +82,10 @@ myForm.addEventListener("submit", function (e) {
 
   formData.append("user", JSON.parse(token));
   formData.append("total", getTotal() + ShipingPrice());
-  formData.append("date", new Date());
+  formData.append(
+    "date",
+    new Date().toISOString().slice(0, 19).replace("T", " ")
+  );
   const searchParams = new URLSearchParams();
 
   for (const pair of formData) {
