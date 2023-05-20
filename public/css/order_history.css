@@ -84,7 +84,7 @@ input:focus {
   align-items: center;
   justify-content: center;
   margin: 10px 0;
-  background: #ff222285;
+  background: red;
   border-radius: 50px;
   color: #fff;
 }
