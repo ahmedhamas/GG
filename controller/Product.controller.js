@@ -97,14 +97,14 @@ const controller = {
     res.render("cart.ejs");
   },
   searchProduct: (req, res) => {
-    const { Searchquery } = req.body;
+    const Searchquery = req.body.search;
     db.query(
-      `SELECT * FROM product WHERE name_ar LIKE '%${Searchquery}%'`,
+      `SELECT * FROM product WHERE name_ar OR price LIKE '%${Searchquery}%'`,
       (err, result) => {
         if (err) throw err;
         res.render("Product/search", {
           SearchedProduct: result,
-          for: Searchquery,
+          search: Searchquery,
         });
       }
     );

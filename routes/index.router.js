@@ -21,5 +21,6 @@ router.get("/user/info/o_h/:userId", OrderController.getOrderHistory);
 router.post("/login", UserController.Login);
 router.post("/register", UserController.Register);
 router.post("/order", OrderController.addOne);
+router.post("/search", ProductController.searchProduct);
 //? }
 module.exports = router;
