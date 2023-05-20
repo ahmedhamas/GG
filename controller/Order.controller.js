@@ -14,15 +14,12 @@ const controller = {
           [id, user, city, address, phone, phone2, total, date, cart],
           (err, result) => {
             if (err) throw err;
-            res.json({
-              success: 1,
-            });
+            res.send(`<script>
+            localStorage.setItem('cart','[]')
+            location.replace('/pay/info/success')
+          </script>`);
           }
         );
-      } else {
-        res.json({
-          success: 0,
-        });
       }
     });
   },

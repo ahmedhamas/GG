@@ -27,39 +27,16 @@ const controller = {
     );
   },
   getOne: (req, res) => {
-    const auth = req.cookies.Status;
-    const admin = req.cookies.StateM;
     const { category } = req.params;
     db.query(
       "SELECT * FROM `subcategory` WHERE `category` = ?",
       [category],
       (err, result) => {
         if (err) throw err;
-
-        if (admin !== undefined) {
-          res.render("Category", {
-            subcategory: result,
-            name: category,
-            auth: true,
-            admin: true,
-          });
-        } else {
-          if (auth !== undefined) {
-            res.render("Category", {
-              subcategory: result,
-              name: category,
-              auth: true,
-              admin: false,
-            });
-          } else {
-            res.render("Category", {
-              subcategory: result,
-              name: category,
-              auth: false,
-              admin: false,
-            });
-          }
-        }
+        res.render("Category", {
+          subcategory: result,
+          name: category,
+        });
       }
     );
   },

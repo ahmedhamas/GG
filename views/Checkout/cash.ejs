@@ -17,7 +17,7 @@
       <div id="checkoutContainer">
         <div id="countContainer"></div>
       </div>
-      <form id="order">
+      <form id="order" action="/order" method="post">
         <div class="input">
           <select name="city" required>
             <option disabled selected value="">المدينة</option>
@@ -37,6 +37,7 @@
           <label>رقم هاتف احتياطي</label>
           <input type="tel" required name="phone2" />
         </div>
+        <div id="otherinput"></div>
         <div class="input">
           <button type="submit">اطلب الان</button>
         </div>

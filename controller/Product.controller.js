@@ -1,25 +1,4 @@
 const db = require("../db/index");
-//! functiaons {
-
-function isProductInCart(cart, id) {
-  for (let i = 0; i < cart.length; i++) {
-    if (cart[i].id == id) {
-      return true;
-    }
-  }
-  return false;
-}
-
-function calcluteTotal(cart, req) {
-  total = 0;
-  for (let i = 0; i < cart.length; i++) {
-    if (cart[i].price) {
-      total = total + cart[i].price * cart[i].quantity;
-    }
-  }
-}
-
-//! }
 
 const controller = {
   addOne: (req, res) => {

@@ -73,40 +73,16 @@ function getTotal() {
 
   return sum * disCount;
 }
-myForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-
+function moreInputs() {
   let token = JSON.stringify(localStorage.getItem("Token"));
 
-  const formData = new FormData(this);
-  formData.append("user", JSON.parse(token));
-  formData.append("total", getTotal() + ShipingPrice());
-  formData.append("cart", JSON.stringify(cart));
-  const searchParams = new URLSearchParams();
+  const otherinput = document.getElementById("otherinput");
 
-  for (const pair of formData) {
-    searchParams.append(pair[0], pair[1]);
-  }
-  console.log(searchParams);
-  fetch("https://different-tunic-bull.cyclic.app/order", {
-    method: "post",
-    body: searchParams,
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      if (res.success == 0) {
-        message.style.color = "#fff";
-        message.style.background = "red";
-        message.style.fontSize = "12px";
-        message.style.padding = " 0 2.5px";
-        message.style.borderRadius = "50px";
-        message.innerHTML = res.message;
-      } else {
-        localStorage.setItem("cart", "[]");
-        location.replace("/pay/info/success");
-      }
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-});
+  otherinput.innerHTML = `<input type='hidden' name='user' value='${JSON.parse(
+    token
+  )}' /> <input type='hidden' name='total' value='${JSON.parse(
+    getTotal() + ShipingPrice()
+  )}' /> <input type='hidden' name='cart' value='${JSON.stringify(cart)}' />`;
+}
+
+moreInputs();
