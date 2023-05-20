@@ -88,7 +88,7 @@ myForm.addEventListener("submit", function (e) {
     searchParams.append(pair[0], pair[1]);
   }
   console.log(searchParams);
-  fetch("http://localhost:3000/order", {
+  fetch("https://different-tunic-bull.cyclic.app/order", {
     method: "post",
     body: searchParams,
   })
