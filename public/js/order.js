@@ -81,6 +81,7 @@ myForm.addEventListener("submit", function (e) {
   const formData = new FormData(this);
   formData.append("user", JSON.parse(token));
   formData.append("total", getTotal() + ShipingPrice());
+  formData.append("cart", JSON.stringify(cart));
   const searchParams = new URLSearchParams();
 
   for (const pair of formData) {
@@ -101,23 +102,6 @@ myForm.addEventListener("submit", function (e) {
         message.style.borderRadius = "50px";
         message.innerHTML = res.message;
       } else {
-        cart.forEach((element) => {
-          const formData = new FormData();
-          const searchParams = new URLSearchParams();
-
-          formData.append("product", element.id);
-          formData.append("order", res.orderId);
-          formData.append("quantity", element.quantity);
-
-          for (const pair of formData) {
-            searchParams.append(pair[0], pair[1], pair[2]);
-          }
-
-          fetch("http://localhost:3000/orderItem", {
-            method: "post",
-            body: searchParams,
-          }).then(console.log("ok"));
-        });
         localStorage.setItem("cart", "[]");
         location.replace("/pay/info/success");
       }

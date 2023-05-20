@@ -3,21 +3,19 @@ const { v4: uuidv4 } = require("uuid");
 
 const controller = {
   addOne: (req, res) => {
-    const { city, address, phone, phone2, user, total } = req.body;
+    const { city, address, phone, phone2, user, total, cart } = req.body;
     const id = uuidv4();
     const date = new Date().toISOString().slice(0, 19).replace("T", " ");
-    console.log();
     db.query("SELECT * FROM users WHERE id = ?", [user], (err, result) => {
       if (err) throw err;
       if (result.length > 0) {
         db.query(
-          "INSERT INTO `orders` (`id`, `user`, `City`, `Address`, `phone`, `phone2`, `total`,`date`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-          [id, user, city, address, phone, phone2, total, date],
+          "INSERT INTO `orders` (`id`, `users`, `City`, `Address`, `phone`, `phone2`, `total`, `date`, `cart`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          [id, user, city, address, phone, phone2, total, date, cart],
           (err, result) => {
             if (err) throw err;
             res.json({
               success: 1,
-              orderId: id,
             });
           }
         );
@@ -28,23 +26,26 @@ const controller = {
       }
     });
   },
-  addItems: (req, res) => {
-    const { product, order, quantity } = req.body;
-    db.query(
-      "INSERT INTO `orderitem` (`product`, `orders`, `quantity`) VALUES (?, ?, ?)",
-      [product, order, quantity],
-      (err, result) => {
-        res.json({
-          success: 1,
-        });
-      }
-    );
-  },
   getSuccess: (req, res) => {
     res.render("Checkout/success");
   },
   getOrderHistory: (req, res) => {
-    res.render("Checkout/orderhistory");
+    const userId = req.params.userId;
+    const name = {};
+    db.query("SELECT name FROM users WHERE id = ?", [userId], (err, result) => {
+      if (err) throw err;
+      if (result.length > 0) {
+        Object.assign(name, result[0]);
+        db.query(
+          "SELECT * FROM `orders` WHERE users = ?",
+          [userId],
+          (err, result) => {
+            if (err) throw err;
+            res.render("Checkout/orderhistory", { orders: result, name: name });
+          }
+        );
+      }
+    });
   },
   getOne: (req, res) => {
     const token = req.params;

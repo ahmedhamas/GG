@@ -15,12 +15,11 @@ router.get("/user/info/login", UserController.getLogin);
 router.get("/user/info/register", UserController.getRegister);
 router.get("/pay/info/cash_on_delivery", OrderController.getCash);
 router.get("/pay/info/success", OrderController.getSuccess);
-router.get("/user/info/o_h", OrderController.getOrderHistory);
+router.get("/user/info/o_h/:userId", OrderController.getOrderHistory);
 //? }
 //? POST {
 router.post("/login", UserController.Login);
 router.post("/register", UserController.Register);
 router.post("/order", OrderController.addOne);
-router.post("/orderItem", OrderController.addItems);
 //? }
 module.exports = router;

@@ -11,6 +11,8 @@ MenuBtn.addEventListener("click", function () {
     MenuBar.style.transform = "translateX(105%)";
   }
 });
+let token = JSON.stringify(localStorage.getItem("Token"));
+let parsedToken = JSON.parse(token);
 
 let cart = JSON.parse(localStorage.getItem("cart"));
 function cartLen() {
@@ -155,7 +157,7 @@ cursor: pointer;  border: none; font-size:15px;"
     align-items: center;
     justify-content: center;
   "
-><a href="/user/info/o_h" style="color: #fff; text-decoration: none"
+><a href="/user/info/o_h/${parsedToken}" style="color: #fff; text-decoration: none"
 >سجل الطلبات</a
 >
 </li>

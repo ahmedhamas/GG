@@ -17,3 +17,113 @@ textarea:focus,
 input:focus {
   outline: none;
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.orderContainer {
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  width: auto;
+}
+
+.orderContainer .head .orderdate {
+  display: flex;
+  padding: 0 5px;
+}
+
+.orderContainer .head {
+  display: flex;
+  align-items: center;
+}
+
+.orderContainer .head p {
+  padding: 0 10px;
+}
+
+.orderContainer .head h4 {
+  color: #a1a1a1;
+  font-weight: 500;
+  padding: 0 5px;
+}
+
+.orderInfo {
+  padding: 10px 0;
+}
+
+.orderContainer h3 {
+  width: 100%;
+  color: #a1a1a1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.orderitem {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.orderitem img {
+  width: 125px;
+  height: 125px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.orderStatus .failed {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  background: #ff222285;
+  border-radius: 50px;
+  color: #fff;
+}
+
+.orderStatus .success {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  background: #00df007a;
+  border-radius: 50px;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .orderContainer {
+    width: 95%;
+  }
+  .orderContainer .head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .orderContainer .orderdate {
+    display: flex;
+  }
+
+  .orderContainer .orderdate h4 {
+    padding: 0 5px;
+  }
+}
+
+@media (max-width: 300px) {
+  .orderitem img {
+    width: 75px;
+    height: 75px;
+    margin-left: 5px;
+  }
+  .orderitem p {
+    font-size: 12px;
+  }
+}
