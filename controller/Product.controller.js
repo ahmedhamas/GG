@@ -94,26 +94,20 @@ const controller = {
     );
   },
   getCart: (req, res) => {
-    const auth = req.cookies.Status;
-    const admin = req.cookies.StateM;
-    if (admin !== undefined) {
-      res.render("cart.ejs", {
-        auth: true,
-        admin: true,
-      });
-    } else {
-      if (auth !== undefined) {
-        res.render("cart.ejs", {
-          auth: true,
-          admin: false,
-        });
-      } else {
-        res.render("cart.ejs", {
-          auth: false,
-          admin: false,
+    res.render("cart.ejs");
+  },
+  searchProduct: (req, res) => {
+    const { Searchquery } = req.body;
+    db.query(
+      `SELECT * FROM product WHERE name_ar LIKE '%${Searchquery}%'`,
+      (err, result) => {
+        if (err) throw err;
+        res.render("Product/search", {
+          SearchedProduct: result,
+          for: Searchquery,
         });
       }
-    }
+    );
   },
 };
 

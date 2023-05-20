@@ -30,6 +30,7 @@ input:focus {
   padding: 10px;
   border-radius: 10px;
   width: auto;
+  margin: 20px 0;
 }
 
 .orderContainer .head .orderdate {
