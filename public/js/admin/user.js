@@ -19,6 +19,7 @@ function search() {
       .then((res) => {
         users.push(res.data);
         usersL();
+        console.log(res.data);
       });
   });
   function usersL() {

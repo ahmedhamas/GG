@@ -111,8 +111,9 @@ const controller = {
   //! SEARCH {
   searchUsers: (req, res) => {
     const Searchquery = req.body.searchUser;
+    console.log(Searchquery);
     db.query(
-      `SELECT * FROM users WHERE name LIKE '%${Searchquery}%'`,
+      `SELECT * FROM users WHERE email LIKE '%${Searchquery}%'`,
       (err, result) => {
         if (err) throw err;
         res.json({
@@ -136,7 +137,7 @@ const controller = {
   searchOrders: (req, res) => {
     const Searchquery = req.body.searchUser;
     db.query(
-      `SELECT * FROM orders WHERE id LIKE '%${Searchquery}%'`,
+      `SELECT * FROM orders WHERE id OR users LIKE '%${Searchquery}%' LIMIT 0,50`,
       (err, result) => {
         if (err) throw err;
         res.json({
