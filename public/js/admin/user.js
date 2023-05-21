@@ -11,7 +11,7 @@ function search() {
       searchParams.append(pair[0], pair[1]);
     }
 
-    fetch("http://localhost:3000/search/users", {
+    fetch("https://prickly-wasp-buckle.cyclic.app/search/users", {
       method: "post",
       body: searchParams,
     })
