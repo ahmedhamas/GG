@@ -23,7 +23,7 @@ const controller = {
   getOrders: (req, res) => {
     const token = req.params.admin;
     db.query(
-      "SELECT isManger FROM users WHERE id=?",
+      "SELECT isManger FROM users WHERE id=? LIMIT 0,50",
       [token],
       (err, result) => {
         if (err) throw err;
@@ -136,7 +136,7 @@ const controller = {
   searchOrders: (req, res) => {
     const Searchquery = req.body.searchUser;
     db.query(
-      `SELECT * FROM users WHERE name LIKE '%${Searchquery}%'`,
+      `SELECT * FROM orders WHERE id LIKE '%${Searchquery}%'`,
       (err, result) => {
         if (err) throw err;
         res.json({

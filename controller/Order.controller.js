@@ -44,35 +44,40 @@ const controller = {
       }
     });
   },
-  getOne: (req, res) => {
-    const token = req.params;
+  getCash: (req, res) => {
+    res.render("Checkout/cash.ejs");
+  },
+  editDelivered: (req, res) => {
+    const { id, isDelivered } = req.body;
     db.query(
-      "SELECT token FROM `users` WHERE (email, password) = (?, ?)",
-      token,
+      "UPDATE `orders` SET `delivered` = ? WHERE `orders`.`id` = ?",
+      [isDelivered, id],
       (err, result) => {
         if (err) throw err;
-        if (result.length > 0) {
-          res.json({
-            message: "You are successfully logged in",
-          });
-        } else {
-          res.json({
-            message: "can't login with provided email and password",
-          });
-        }
+        res.send(`
+        <script>
+        alert("${id}  has been updated") 
+          window.history.back();
+          location.reload()
+        </script>`);
       }
     );
   },
-  getAll: (req, res) => {
-    db.query("SELECT * FROM user", (err, result) => {
-      if (err) throw err;
-      res.json({
-        data: result,
-      });
-    });
-  },
-  getCash: (req, res) => {
-    res.render("Checkout/cash.ejs");
+  editPaid: (req, res) => {
+    const { id, isPaid } = req.body;
+    db.query(
+      "UPDATE `orders` SET `paid` = ? WHERE `orders`.`id` = ?",
+      [isPaid, id],
+      (err, result) => {
+        if (err) throw err;
+        res.send(`
+      <script>
+      alert("${id}  has been updated") 
+        window.history.back();
+        location.reload()
+      </script>`);
+      }
+    );
   },
 };
 

@@ -32,12 +32,14 @@ router.post("/search/users", AdminController.searchUsers);
 router.post("/search/product", ProductController.searchProduct);
 router.post("/search/category", ProductController.searchProduct);
 router.post("/search/subcategory", ProductController.searchProduct);
-router.post("/search/orders", ProductController.searchProduct);
+router.post("/search/orders", AdminController.searchOrders);
 //? }
 //? DELETE {
 router.post("/delete/user", AdminController.deleteUser);
 //? }
 //? EDIT {
 router.post("/edit/user", UserController.editManger);
+router.post("/edit/order/delivered", OrderController.editDelivered);
+router.post("/edit/order/paid", OrderController.editPaid);
 //? }
 module.exports = router;

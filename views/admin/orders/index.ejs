@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ORDERS</title>
+    <link rel="stylesheet" href="/css/admin/order.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body onload="">
+    <div id="container">
+      <h2>عدد الطلبات: <%= orders.length %></h2>
+      <div class="two">
+        <% orders.forEach(order => { %>
+        <div class="orderRec">
+          <form action="/delete/order" method="post">
+            <input type="hidden" name="orderid" value="<%= order.id %>" />
+            <button class="delete" type="submit">
+              <i class="bx bx-trash"></i>
+            </button>
+          </form>
+          <p>معرف الطلب: <%= order.id.substr(24, 25)%></p>
+          <p>تاريخ الطلب: <%= order.date.toISOString().slice(0, 10)%></p>
+          <p>العنوان: <%= order.Address%></p>
+          <p>معرف المستخدم: <%= order.users.substr(24, 25)%></p>
+          <p>رقم الهاتف: <%= order.phone%></p>
+          <p>هاتف احتياطي: <%= order.phone2%></p>
+          <p>المجموع: <%= order.total%> ج</p>
+          <div class="Delivered">
+            تسليم الطلب: <% if (order.delivered === 1) { %> نعم <% }else { %>لا
+            <% } %>
+            <form action="/edit/order/delivered" method="post">
+              <input type="hidden" name="id" value="<%= order.id%>" />
+              <select name="isDelivered">
+                <option value="0" selected>لا</option>
+                <option value="1">نعم</option>
+              </select>
+              <button type="submit">تغيير</button>
+            </form>
+          </div>
+          <div class="Paid">
+            تم الدفع: <% if (order.paid === 1) { %> نعم <% }else { %>لا <% } %>
+            <form action="/edit/order/paid" method="post">
+              <input type="hidden" name="id" value="<%= order.id%>" />
+              <select name="isPaid">
+                <option value="0" selected>لا</option>
+                <option value="1">نعم</option>
+              </select>
+              <button type="submit">تغيير</button>
+            </form>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+      <div class="searchForUser">
+        <form id="myForm">
+          البحث عن الطلبات
+          <input type="search" name="searchUser" />
+          <button type="submit" onclick="search()">
+            <i class="bx bx-search"></i>
+          </button>
+        </form>
+        <div id="result"></div>
+      </div>
+    </div>
+    <script src="/js/admin/order.js"></script>
+  </body>
+</html>
