@@ -80,19 +80,6 @@ const controller = {
       }
     );
   },
-  deleteOne: (req, res) => {
-    const { name } = req.params;
-    db.query(
-      "DELETE FROM `category` WHERE `category`.`name` = ?",
-      [name],
-      (err, result) => {
-        if (err) throw err;
-        res.json({
-          message: name + " has been deleted",
-        });
-      }
-    );
-  },
   getAll: (req, res) => {
     const auth = req.cookies.Status;
     const admin = req.cookies.StateM;

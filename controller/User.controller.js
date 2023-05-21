@@ -69,28 +69,6 @@ const controller = {
   getRegister: (req, res) => {
     res.render("User/register");
   },
-  deleteOne: (req, res) => {
-    const { id } = req.params;
-    console.log(id);
-    db.query(
-      "DELETE FROM `users` WHERE `users`.`id` = ?",
-      [id],
-      (err, result) => {
-        if (err) throw err;
-        res.json({
-          message: id + " has been deleted",
-        });
-      }
-    );
-  },
-  getAll: (req, res) => {
-    db.query("SELECT * FROM users", (err, result) => {
-      if (err) throw err;
-      res.json({
-        data: result,
-      });
-    });
-  },
 };
 
 module.exports = controller;

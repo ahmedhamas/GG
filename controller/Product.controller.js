@@ -45,19 +45,6 @@ const controller = {
       }
     });
   },
-  deleteOne: (req, res) => {
-    const { id } = req.params;
-    db.query(
-      "DELETE FROM product WHERE `product`.`id` = ?",
-      [id],
-      (err, result) => {
-        if (err) throw err;
-        res.json({
-          message: id + "has been deleted",
-        });
-      }
-    );
-  },
   getCode: (req, res) => {
     const { code } = req.body;
     db.query(

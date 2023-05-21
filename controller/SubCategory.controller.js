@@ -26,19 +26,6 @@ const controller = {
       }
     );
   },
-  deleteOne: (req, res) => {
-    const id = req.params;
-    db.query(
-      "DELETE FROM subcategory WHERE `subcategory`.`id` = ?",
-      [id],
-      (err, result) => {
-        if (err) throw err;
-        res.json({
-          message: id + "has been deleted",
-        });
-      }
-    );
-  },
 };
 
 module.exports = controller;

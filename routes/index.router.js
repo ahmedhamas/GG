@@ -4,7 +4,7 @@ const CategoryController = require("../controller/Category.controller");
 const ProductController = require("../controller/Product.controller");
 const UserController = require("../controller/User.controller");
 const OrderController = require("../controller/Order.controller");
-
+const AdminController = require("../controller/Admin.controller");
 //? GET {
 router.get("/", CategoryController.getAll);
 router.get("/:category", CategoryController.getOne);
@@ -15,12 +15,26 @@ router.get("/user/info/login", UserController.getLogin);
 router.get("/user/info/register", UserController.getRegister);
 router.get("/pay/info/cash_on_delivery", OrderController.getCash);
 router.get("/pay/info/success", OrderController.getSuccess);
+router.get("/user/info/admin/:admin", AdminController.getAdmin);
 router.get("/user/info/o_h/:userId", OrderController.getOrderHistory);
+router.get("/admin/panle/users/:admin", AdminController.getUser);
+router.get("/admin/panle/products/:admin", AdminController.getProducut);
+router.get("/admin/panle/categorys/:admin", AdminController.getCategory);
+router.get("/admin/panle/subcategorys/:admin", AdminController.getSubCategory);
+router.get("/admin/panle/orders/:admin", AdminController.getOrders);
 //? }
 //? POST {
 router.post("/login", UserController.Login);
 router.post("/register", UserController.Register);
 router.post("/order", OrderController.addOne);
 router.post("/search", ProductController.searchProduct);
+router.post("/search/users", AdminController.searchUsers);
+router.post("/search/product", ProductController.searchProduct);
+router.post("/search/category", ProductController.searchProduct);
+router.post("/search/subcategory", ProductController.searchProduct);
+router.post("/search/orders", ProductController.searchProduct);
+//? }
+//? DELETE {
+router.post("/delete/user", AdminController.deleteUser);
 //? }
 module.exports = router;

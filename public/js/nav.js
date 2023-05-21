@@ -189,7 +189,7 @@ if (
   "49f41477fa1bfc3b4792d5233b6a659f4bc1772692e9d5fe7db0624a300652eb"
 ) {
   const adPage = document.getElementById("adPage");
-  adPage.innerHTML = `<a href='/user/info/admin' style="color: #fff; text-decoration: none">صفحة الإدارة</a>`;
+  adPage.innerHTML = `<a href='/user/info/admin/${parsedToken}' style="color: #fff; text-decoration: none">صفحة الإدارة</a>`;
 }
 
 function logout() {

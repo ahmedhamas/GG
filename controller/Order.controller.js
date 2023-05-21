@@ -63,19 +63,6 @@ const controller = {
       }
     );
   },
-  deleteOne: (req, res) => {
-    const id = req.params;
-    db.query(
-      "DELETE FROM users WHERE `users`.`id` = ?",
-      [id],
-      (err, result) => {
-        if (err) throw err;
-        res.json({
-          message: id + "has been deleted",
-        });
-      }
-    );
-  },
   getAll: (req, res) => {
     db.query("SELECT * FROM user", (err, result) => {
       if (err) throw err;
