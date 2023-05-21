@@ -178,9 +178,12 @@ const controller = {
       [id],
       (err, result) => {
         if (err) throw err;
-        res.json({
-          message: id + " has been deleted",
-        });
+        res.send(`
+        <script>
+        alert("${id}  has been deleted") 
+          window.history.back();
+          location.reload()
+        </script>`);
       }
     );
   },
@@ -191,9 +194,12 @@ const controller = {
       [id],
       (err, result) => {
         if (err) throw err;
-        res.json({
-          message: id + " has been deleted",
-        });
+        res.send(`
+        <script>
+        alert("${id}  has been deleted") 
+          window.history.back();
+          location.reload()
+        </script>`);
       }
     );
   },
@@ -204,9 +210,12 @@ const controller = {
       [id],
       (err, result) => {
         if (err) throw err;
-        res.json({
-          message: id + " has been deleted",
-        });
+        res.send(`
+        <script>
+        alert("${id}  has been deleted") 
+          window.history.back();
+          location.reload()
+        </script>`);
       }
     );
   },
@@ -217,9 +226,12 @@ const controller = {
       [id],
       (err, result) => {
         if (err) throw err;
-        res.json({
-          message: id + " has been deleted",
-        });
+        res.send(`
+        <script>
+        alert("${id}  has been deleted") 
+          window.history.back();
+          location.reload()
+        </script>`);
       }
     );
   },
@@ -230,9 +242,12 @@ const controller = {
       [id],
       (err, result) => {
         if (err) throw err;
-        res.json({
-          message: id + " has been deleted",
-        });
+        res.send(`
+        <script>
+        alert("${id}  has been deleted") 
+          window.history.back();
+          location.reload()
+        </script>`);
       }
     );
   },

@@ -37,4 +37,7 @@ router.post("/search/orders", ProductController.searchProduct);
 //? DELETE {
 router.post("/delete/user", AdminController.deleteUser);
 //? }
+//? EDIT {
+router.post("/edit/user", UserController.editManger);
+//? }
 module.exports = router;

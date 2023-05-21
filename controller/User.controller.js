@@ -69,6 +69,24 @@ const controller = {
   getRegister: (req, res) => {
     res.render("User/register");
   },
+  editManger: (req, res) => {
+    const { id, isManger } = req.body;
+    console.log(req.body);
+    console.log(id, isManger);
+    db.query(
+      "UPDATE `users` SET `isManger` = ? WHERE `users`.`id` = ?",
+      [isManger, id],
+      (err, result) => {
+        if (err) throw err;
+        res.send(`
+        <script>
+        alert("${id}  has been updated") 
+          window.history.back();
+          location.reload()
+        </script>`);
+      }
+    );
+  },
 };
 
 module.exports = controller;

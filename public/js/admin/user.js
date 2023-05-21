@@ -41,7 +41,16 @@ function search() {
                     </form>
                     <p>معرف المستخدم: ${user.id.substr(24, 25)}</p>
                     <p>اسم المستخدم: ${user.name}</p>
-                    <p>المستخدم مدير: ${manger()}</p>
+                    <div class='manger'>المستخدم مدير: ${manger()} 
+                    <form action='/edit/user' method='post'>
+                    <input type='hidden' name='id' value='${user.id}'/>
+                    <select name="isManger">
+                      <option value="0" selected>لا</option>
+                      <option value="1" >نعم</option>
+                    </select>
+                    <button type='submit'>تغيير</button>
+                  </form>
+                  </div>
                     <p>البريد الالكتروني للمستخدم: ${user.email}</p>
                   </div>`;
       })
@@ -50,3 +59,13 @@ function search() {
     Container.innerHTML = mappedItems;
   }
 }
+window.addEventListener("pageshow", function (event) {
+  var historyTraversal =
+    event.persisted ||
+    (typeof window.performance != "undefined" &&
+      window.performance.navigation.type === 2);
+  if (historyTraversal) {
+    // Handle page restore.
+    window.location.reload();
+  }
+});
