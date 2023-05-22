@@ -126,7 +126,7 @@ const controller = {
     );
   },
   searchProduct: (req, res) => {
-    const Searchquery = req.body.search;
+    const Searchquery = req.body.searchProducts;
     console.log(req.body);
     db.query(
       `SELECT * FROM product WHERE name_ar LIKE '%${Searchquery}%'`,
