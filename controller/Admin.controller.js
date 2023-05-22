@@ -132,9 +132,8 @@ const controller = {
       `SELECT * FROM product WHERE name_ar LIKE '%${Searchquery}%'`,
       (err, result) => {
         if (err) throw err;
-        res.render("Product/search", {
-          SearchedProduct: result,
-          search: Searchquery,
+        res.json({
+          data: result,
         });
       }
     );
