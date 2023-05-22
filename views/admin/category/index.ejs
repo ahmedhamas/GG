@@ -5,6 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Category</title>
+    <link rel="stylesheet" href="/css/admin/category.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="catecontainer">
+        <% category.forEach(category => { %>
+        <div class="category">
+          <form action="/delete/category" method="post" id="delete">
+            <input type="hidden" name="categoryid" value="<%= category.id %>" />
+            <button type="submit"><i class="bx bx-trash"></i></button>
+          </form>
+          <p>معرف:<%= category.id %></p>
+          <p>الاسم: <%= category.name_ar %></p>
+          <p>مسار الصورة :<%= category.image %></p>
+          <img src="<%= category.image %>" />
+        </div>
+        <form action="/edit/category" method="post" id="editform">
+          <input type="hidden" name="categoryid" value="<%= category.id %>" />
+          <input type="text" name="name" value="<%= category.name_ar %>" />
+          <input type="text" name="image" value="<%= category.image %>" />
+          <button type="submit">تغير</button>
+        </form>
+        <% }) %>
+      </div>
+      <form
+        style="margin-top: 25px"
+        action="/add/category"
+        method="post"
+        id="editform"
+      >
+        <input type="text" name="name_ar" />
+        <input type="text" name="image" placeholder="image url" />
+        <button><i class="bx bx-folder-plus"></i></button>
+      </form>
+    </div>
+    <script></script>
+  </body>
 </html>

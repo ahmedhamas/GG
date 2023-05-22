@@ -5,6 +5,7 @@ const ProductController = require("../controller/Product.controller");
 const UserController = require("../controller/User.controller");
 const OrderController = require("../controller/Order.controller");
 const AdminController = require("../controller/Admin.controller");
+const SubcategoryController = require("../controller/SubCategory.controller");
 //? GET {
 router.get("/", CategoryController.getAll);
 router.get("/:category", CategoryController.getOne);
@@ -34,13 +35,20 @@ router.post("/search/category", ProductController.searchProduct);
 router.post("/search/subcategory", ProductController.searchProduct);
 router.post("/search/orders", AdminController.searchOrders);
 router.post("/search/orders/city", OrderController.getCitysOrders);
+router.post("/add/category", CategoryController.addOne);
+router.post("/add/subcategory", SubcategoryController.addOne);
 //? }
 //? DELETE {
 router.post("/delete/user", AdminController.deleteUser);
+router.post("/delete/order", AdminController.deleteOrder);
+router.post("/delete/category", AdminController.deleteCategory);
+router.post("/delete/subcategory", AdminController.deleteSubcategory);
 //? }
 //? EDIT {
 router.post("/edit/user", UserController.editManger);
 router.post("/edit/order/delivered", OrderController.editDelivered);
 router.post("/edit/order/paid", OrderController.editPaid);
+router.post("/edit/category", CategoryController.editCategory);
+router.post("/edit/subcategory", SubcategoryController.editSubcategory);
 //? }
 module.exports = router;

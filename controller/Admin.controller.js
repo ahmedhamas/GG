@@ -64,10 +64,16 @@ const controller = {
       (err, result) => {
         if (err) throw err;
         if (result[0].isManger === 1) {
-          db.query("SELECT * FROM subcategory", (err, result) => {
-            if (err) throw err;
-            res.render("admin/subcategory", { subcategory: result });
-          });
+          db.query(
+            "SELECT * FROM subcategory; SELECT name_ar FROM category",
+            (err, result) => {
+              if (err) throw err;
+              res.render("admin/subcategory", {
+                subcategory: result[0],
+                category: result[1],
+              });
+            }
+          );
         } else {
           res.redirect("/");
         }
@@ -138,18 +144,6 @@ const controller = {
     const Searchquery = req.body.searchUser;
     db.query(
       `SELECT * FROM orders WHERE id OR users LIKE '%${Searchquery}%' LIMIT 0,50`,
-      (err, result) => {
-        if (err) throw err;
-        res.json({
-          data: result,
-        });
-      }
-    );
-  },
-  searchCategory: (req, res) => {
-    const Searchquery = req.body.searchUser;
-    db.query(
-      `SELECT * FROM users WHERE name LIKE '%${Searchquery}%'`,
       (err, result) => {
         if (err) throw err;
         res.json({
@@ -237,7 +231,7 @@ const controller = {
     );
   },
   deleteOrder: (req, res) => {
-    const id = req.body.ordersid;
+    const id = req.body.orderid;
     db.query(
       "DELETE FROM `orders` WHERE `orders`.`id` = ?",
       [id],

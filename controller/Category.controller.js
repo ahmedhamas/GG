@@ -108,6 +108,23 @@ const controller = {
       }
     });
   },
+  editCategory: (req, res) => {
+    const { categoryid, name, image } = req.body;
+    console.log(req.body);
+    db.query(
+      "UPDATE `category` SET `image` = ?, `name_ar` = ? WHERE `category`.`id` = ?",
+      [image, name, categoryid],
+      (err, result) => {
+        if (err) throw err;
+        res.send(`
+    <script>
+    alert("${categoryid}  has been updated") 
+      window.history.back();
+      location.reload()
+    </script>`);
+      }
+    );
+  },
 };
 
 module.exports = controller;
