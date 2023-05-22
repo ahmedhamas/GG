@@ -33,7 +33,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 95%;
+        width: 65%;
         flex-direction: column;
       }
       .about h2 {
@@ -41,7 +41,7 @@
         height: 50px;
         color: red;
         background: #fff;
-        width: 95%;
+        width: 100%;
         padding: 0 5px;
         border-radius: 5px;
         display: flex;
@@ -51,7 +51,7 @@
       }
       .idk {
         margin: 15px 0;
-        width: 80%;
+        width: 65%;
         height: auto;
       }
       .idk h3 {
@@ -70,6 +70,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
+      }
+      @media (max-width: 600px) {
+        .about {
+          width: 90%;
+        }
+        .idk {
+          width: 90%;
+        }
       }
     </style>
     <link

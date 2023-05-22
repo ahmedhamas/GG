@@ -10,10 +10,7 @@ const controller = {
       (err, result) => {
         if (err) throw err;
         if (result[0].isManger === 1) {
-          db.query("SELECT * FROM producut", (err, result) => {
-            if (err) throw err;
-            res.render("admin/producut", { producut: result });
-          });
+          res.render("admin/products");
         } else {
           res.redirect("/");
         }
@@ -129,9 +126,9 @@ const controller = {
     );
   },
   searchProduct: (req, res) => {
-    const Searchquery = req.body.searchUser;
+    const Searchquery = req.body.searchProduct;
     db.query(
-      `SELECT * FROM users WHERE name LIKE '%${Searchquery}%'`,
+      `SELECT * FROM product WHERE name_ar LIKE '%${Searchquery}%'`,
       (err, result) => {
         if (err) throw err;
         res.json({
@@ -144,18 +141,6 @@ const controller = {
     const Searchquery = req.body.searchUser;
     db.query(
       `SELECT * FROM orders WHERE id OR users LIKE '%${Searchquery}%' LIMIT 0,50`,
-      (err, result) => {
-        if (err) throw err;
-        res.json({
-          data: result,
-        });
-      }
-    );
-  },
-  searchSubcategory: (req, res) => {
-    const Searchquery = req.body.searchUser;
-    db.query(
-      `SELECT * FROM users WHERE name LIKE '%${Searchquery}%'`,
       (err, result) => {
         if (err) throw err;
         res.json({
