@@ -25,7 +25,8 @@ myForm.addEventListener("submit", function (e) {
         message.style.background = "red";
         message.style.fontSize = "12px";
         message.style.padding = " 0 2.5px";
-        message.style.borderRadius = "50px";
+        message.style.borderRadius = "5px";
+        message.style.padding = "0 5px";
         message.innerHTML = res.message;
       } else {
         location.replace("/");
