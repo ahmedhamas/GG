@@ -118,7 +118,7 @@ if (localStorage.getItem("Token") === "noToken") {
     justify-content: center;
   "
 >
-  <a href="/contact_us" style="color: #fff; text-decoration: none"
+  <a href="/gomla/info/contact_us" style="color: #fff; text-decoration: none"
     >اتصل بنا</a
   >
 </li>
@@ -131,7 +131,7 @@ if (localStorage.getItem("Token") === "noToken") {
     justify-content: center;
   "
 >
-  <a href="/about" style="color: #fff; text-decoration: none"
+  <a href="/gomla/info/about" style="color: #fff; text-decoration: none"
     >معلومات عنا</a
   >
 </li>

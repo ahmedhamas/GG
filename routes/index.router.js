@@ -13,6 +13,8 @@ router.get("/:category/:subcategory", CategoryController.getProducts);
 router.get("/product/show/:id", ProductController.getOne);
 router.get("/cart/show/items", ProductController.getCart);
 router.get("/user/info/login", UserController.getLogin);
+router.get("/gomla/info/about", UserController.about);
+router.get("/gomla/info/contact_us", UserController.contactus);
 router.get("/user/info/register", UserController.getRegister);
 router.get("/pay/info/cash_on_delivery", OrderController.getCash);
 router.get("/pay/info/success", OrderController.getSuccess);
@@ -23,8 +25,10 @@ router.get("/admin/panle/products/:admin", AdminController.getProducut);
 router.get("/admin/panle/categorys/:admin", AdminController.getCategory);
 router.get("/admin/panle/subcategorys/:admin", AdminController.getSubCategory);
 router.get("/admin/panle/orders/:admin", AdminController.getOrders);
+router.get("/info/contact_us/success", UserController.contact_success);
 //? }
 //? POST {
+router.get("/contact", UserController.contact);
 router.post("/login", UserController.Login);
 router.post("/register", UserController.Register);
 router.post("/order", OrderController.addOne);

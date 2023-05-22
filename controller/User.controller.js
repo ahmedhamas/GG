@@ -71,8 +71,6 @@ const controller = {
   },
   editManger: (req, res) => {
     const { id, isManger } = req.body;
-    console.log(req.body);
-    console.log(id, isManger);
     db.query(
       "UPDATE `users` SET `isManger` = ? WHERE `users`.`id` = ?",
       [isManger, id],
@@ -87,6 +85,28 @@ const controller = {
       }
     );
   },
+  about: (req, res) => {
+    res.render("about");
+  },
+  contactus: (req, res) => {
+    res.render("contactus");
+  },
+  contact: (req, res) => {
+    const { name, email, message } = req.body;
+    db.query(
+      "INSERT INTO `contact` (`name`, `email`, `message`) VALUES (?, ?, ?)",
+      [name, email, message],
+      (err, result) => {
+        if (err) throw err;
+        res.send(`
+        <script>
+        location.replace('/info/contact_us/success')
+        </script>`);
+      }
+    );
+  },
+  contact_success: (req, res) => {
+    res.render("contact_success");
+  },
 };
-
 module.exports = controller;
