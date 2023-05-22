@@ -30,12 +30,10 @@ function search() {
         return `
                     <div class="productRec" key=${index}>
                       <form action='/delete/product' method='post'>
-                        <input type='hidden' name='productid' value='${
-                          product.id
-                        }'/>
+                        <input type='hidden' name='productid' value='${product.id}'/>
                         <button class='delete' type='submit'><i class='bx bx-trash'></i></button>
                       </form>
-                      <p>معرف المستخدم: ${product.id.substr(24, 25)}</p>
+                      <p>معرف المستخدم: ${product.id}</p>
                       <p>اسم المستخدم: ${product.name}</p>
                       
                     </div>
