@@ -126,13 +126,15 @@ const controller = {
     );
   },
   searchProduct: (req, res) => {
-    const Searchquery = req.body.searchProduct;
+    const Searchquery = req.body.search;
+    console.log(req.body);
     db.query(
       `SELECT * FROM product WHERE name_ar LIKE '%${Searchquery}%'`,
       (err, result) => {
         if (err) throw err;
-        res.json({
-          data: result,
+        res.render("Product/search", {
+          SearchedProduct: result,
+          search: Searchquery,
         });
       }
     );
