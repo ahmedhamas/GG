@@ -48,6 +48,7 @@ const controller = {
         const StateM = crypto
           .createHmac("sha256", result[0].isManger.toString())
           .digest("hex");
+        console.log(StateM);
         if (result.length > 0) {
           res.json({
             success: 1,
