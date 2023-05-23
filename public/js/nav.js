@@ -156,6 +156,18 @@ cursor: pointer;  border: none; font-size:15px;"
     align-items: center;
     justify-content: center;
   "
+><a href="/user/info/profile/${parsedToken}" style="color: #fff; text-decoration: none"
+>الملف الشخصي</a
+>
+</li>
+<li
+  style="
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  "
 ><a href="/user/info/o_h/${parsedToken}" style="color: #fff; text-decoration: none"
 >سجل الطلبات</a
 >

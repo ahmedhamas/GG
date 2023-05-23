@@ -105,5 +105,13 @@ const controller = {
   contact_success: (req, res) => {
     res.render("contact_success");
   },
+  getProfile: (req, res) => {
+    const userId = req.params.userId;
+    db.query("SELECT name FROM users WHERE id = ?", [userId], (err, result) => {
+      if (err) throw err;
+
+      res.render("User/profile", { profile: result[0] });
+    });
+  },
 };
 module.exports = controller;
