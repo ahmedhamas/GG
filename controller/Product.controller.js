@@ -22,27 +22,10 @@ const controller = {
     const { id } = req.params;
     db.query("SELECT * FROM `product` WHERE id = ?", id, (err, result) => {
       if (err) throw err;
-      if (admin !== undefined) {
-        res.render("Product/id", {
-          product: result[0],
-          auth: true,
-          admin: true,
-        });
-      } else {
-        if (auth !== undefined) {
-          res.render("Product/id", {
-            product: result[0],
-            auth: true,
-            admin: false,
-          });
-        } else {
-          res.render("Product/id", {
-            product: result[0],
-            auth: false,
-            admin: false,
-          });
-        }
-      }
+
+      res.render("Product/id", {
+        product: result[0],
+      });
     });
   },
   getCode: (req, res) => {
