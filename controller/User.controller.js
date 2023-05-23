@@ -107,11 +107,26 @@ const controller = {
   },
   getProfile: (req, res) => {
     const userId = req.params.userId;
-    db.query("SELECT name FROM users WHERE id = ?", [userId], (err, result) => {
+    db.query("SELECT * FROM users WHERE id = ?", [userId], (err, result) => {
       if (err) throw err;
-
       res.render("User/profile", { profile: result[0] });
     });
+  },
+  editProfile: (req, res) => {
+    const { id, name, email, password } = req.body;
+    const pass = crypto.createHmac("sha256", password).digest("hex");
+    db.query(
+      "UPDATE `users` SET `name` = ?, `email` = ?, `password` = ? WHERE `users`.`id` = ?",
+      [name, email, pass, id],
+      (err, result) => {
+        if (err) throw err;
+        res.send(`
+        <script>
+          window.history.back();
+          location.reload()
+        </script>`);
+      }
+    );
   },
 };
 module.exports = controller;

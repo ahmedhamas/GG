@@ -55,6 +55,7 @@ router.post("/edit/user", UserController.editManger);
 router.post("/edit/order/delivered", OrderController.editDelivered);
 router.post("/edit/order/paid", OrderController.editPaid);
 router.post("/edit/category", CategoryController.editCategory);
+router.post("/edit/profile", UserController.editProfile);
 router.post("/edit/subcategory", SubcategoryController.editSubcategory);
 //? }
 module.exports = router;

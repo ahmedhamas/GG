@@ -69,5 +69,10 @@
       </div>
       <% } %>
     </div>
+    <script>
+      if (!localStorage.getItem("Token") !== "noToken") {
+        location.replace("/");
+      }
+    </script>
   </body>
 </html>
