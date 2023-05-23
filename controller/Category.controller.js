@@ -34,7 +34,7 @@ const controller = {
     const category = req.params.category;
     db.query(
       "SELECT id,image,name_ar,price FROM `product` WHERE (subcategory, category) = (?, ?)",
-      [subcategory],
+      [subcategory, category],
       (err, result) => {
         if (err) throw err;
 
