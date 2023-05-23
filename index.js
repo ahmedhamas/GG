@@ -2,10 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 require("dotenv").config();
-const cookieParser = require("cookie-parser");
 
 //* express use {
-app.use(cookieParser());
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use("/favicon.ico", express.static("public/img/favicon.ico"));

@@ -40,6 +40,7 @@ router.post("/search/orders", AdminController.searchOrders);
 router.post("/search/orders/city", OrderController.getCitysOrders);
 router.post("/add/category", CategoryController.addOne);
 router.post("/add/subcategory", SubcategoryController.addOne);
+router.post("/contact", UserController.contact);
 //? }
 //? DELETE {
 router.post("/delete/user", AdminController.deleteUser);
