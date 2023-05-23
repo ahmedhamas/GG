@@ -45,7 +45,6 @@ const controller = {
       [email, pass],
       (err, result) => {
         if (err) throw err;
-        console.log(StateM);
         if (result.length > 0) {
           res.json({
             success: 1,
