@@ -29,7 +29,7 @@ myForm.addEventListener("submit", function (e) {
         message.style.padding = "0 5px";
         message.innerHTML = res.message;
       } else {
-        location.replace("/");
+        location.replace("/user/info/login");
       }
     })
     .catch(function (error) {

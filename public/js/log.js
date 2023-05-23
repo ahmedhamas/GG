@@ -37,3 +37,12 @@ myForm.addEventListener("submit", function (e) {
       console.error(error);
     });
 });
+
+function showPass() {
+  const password = document.getElementById("mypassword");
+  if (password.type === "password") {
+    password.type = "text";
+  } else {
+    password.type = "password";
+  }
+}

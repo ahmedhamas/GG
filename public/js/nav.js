@@ -33,9 +33,9 @@ function cartLen() {
     CartLength.style.display = "none";
   }
 }
-
-if (localStorage.getItem("Token") === "noToken") {
-  MenuBar.innerHTML = `    <li
+function logedUser() {
+  if (localStorage.getItem("Token") === "noToken") {
+    MenuBar.innerHTML = `    <li
   style="
     margin: 15px 0;
     width: 100%;
@@ -96,8 +96,8 @@ if (localStorage.getItem("Token") === "noToken") {
 >
   <a href="/"><img src="/img/logo.png" style="width: 100%" /></a>
 </li>`;
-} else {
-  MenuBar.innerHTML = `    <li
+  } else {
+    MenuBar.innerHTML = `    <li
   style="
     margin: 15px 0;
     width: 100%;
@@ -182,13 +182,14 @@ style="
 "
 >
 </li>`;
-}
-if (
-  localStorage.getItem("State") ===
-  "49f41477fa1bfc3b4792d5233b6a659f4bc1772692e9d5fe7db0624a300652eb"
-) {
-  const adPage = document.getElementById("adPage");
-  adPage.innerHTML = `<a href='/user/info/admin/${parsedToken}' style="color: #fff; text-decoration: none">صفحة الإدارة</a>`;
+  }
+  if (
+    localStorage.getItem("State") ===
+    "49f41477fa1bfc3b4792d5233b6a659f4bc1772692e9d5fe7db0624a300652eb"
+  ) {
+    const adPage = document.getElementById("adPage");
+    adPage.innerHTML = `<a href='/user/info/admin/${parsedToken}' style="color: #fff; text-decoration: none">صفحة الإدارة</a>`;
+  }
 }
 
 function logout() {
@@ -196,3 +197,5 @@ function logout() {
   localStorage.setItem("State", "noState");
   location.replace("/");
 }
+
+logedUser();

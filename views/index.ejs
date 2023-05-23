@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
   </head>
-  <body onload="CartFunction(),cartLen()">
+  <body onload="CartFunction(),cartLen(), logedUser()">
     <%- include('components/nav') %>
     <div class="container">
       <% for(var i = 0; i < category.length; i++) { %>
@@ -40,16 +40,6 @@
           localStorage.setItem("State", "noState");
         }
       }
-      (() => {
-        if (window.localStorage) {
-          if (!localStorage.getItem("reload")) {
-            localStorage["reload"] = true;
-            window.location.reload();
-          } else {
-            localStorage.removeItem("reload");
-          }
-        }
-      })();
     </script>
   </body>
 </html>
