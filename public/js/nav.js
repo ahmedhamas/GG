@@ -198,4 +198,4 @@ function logout() {
   location.replace("/");
 }
 
-logedUser();
+setInterval(logedUser, 5000);
