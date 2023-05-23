@@ -17,8 +17,6 @@ const controller = {
     );
   },
   getOne: (req, res) => {
-    const auth = req.cookies.Status;
-    const admin = req.cookies.StateM;
     const { id } = req.params;
     db.query("SELECT * FROM `product` WHERE id = ?", id, (err, result) => {
       if (err) throw err;
