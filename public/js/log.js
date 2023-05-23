@@ -14,7 +14,7 @@ myForm.addEventListener("submit", function (e) {
     searchParams.append(pair[0], pair[1]);
   }
 
-  fetch("https://gomla-plus-online.onrender.com/login", {
+  fetch("https://prickly-wasp-buckle.cyclic.app/login", {
     method: "post",
     body: searchParams,
   })

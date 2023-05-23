@@ -12,7 +12,7 @@ function cityorders() {
       searchParams.append(pair[0], pair[1]);
     }
 
-    fetch("https://gomla-plus-online.onrender.com/search/orders/city", {
+    fetch("https://prickly-wasp-buckle.cyclic.app/search/orders/city", {
       method: "post",
       body: searchParams,
     })
