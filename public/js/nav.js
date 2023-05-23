@@ -183,10 +183,7 @@ style="
 >
 </li>`;
   }
-  if (
-    localStorage.getItem("State") ===
-    "49f41477fa1bfc3b4792d5233b6a659f4bc1772692e9d5fe7db0624a300652eb"
-  ) {
+  if (localStorage.getItem("State") === "1") {
     const adPage = document.getElementById("adPage");
     adPage.innerHTML = `<a href='/user/info/admin/${parsedToken}' style="color: #fff; text-decoration: none">صفحة الإدارة</a>`;
   }

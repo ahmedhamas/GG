@@ -45,15 +45,12 @@ const controller = {
       [email, pass],
       (err, result) => {
         if (err) throw err;
-        const StateM = crypto
-          .createHmac("sha256", result[0].isManger.toString())
-          .digest("hex");
         console.log(StateM);
         if (result.length > 0) {
           res.json({
             success: 1,
             user: result[0].id,
-            StateM: StateM,
+            StateM: result[0].isManger,
           });
         } else {
           res.json({
