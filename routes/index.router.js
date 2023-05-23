@@ -46,6 +46,7 @@ router.post("/delete/user", AdminController.deleteUser);
 router.post("/delete/order", AdminController.deleteOrder);
 router.post("/delete/category", AdminController.deleteCategory);
 router.post("/delete/subcategory", AdminController.deleteSubcategory);
+router.post("/delete/product", AdminController.deleteProduct);
 //? }
 //? EDIT {
 router.post("/edit/user", UserController.editManger);
