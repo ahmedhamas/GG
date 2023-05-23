@@ -11,7 +11,7 @@ function search() {
       searchParams.append(pair[0], pair[1]);
     }
 
-    fetch("https://prickly-wasp-buckle.cyclic.app/search/product", {
+    fetch("https://gomla-plus-online.onrender.com/search/product", {
       method: "post",
       body: searchParams,
     })

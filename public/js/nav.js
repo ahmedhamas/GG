@@ -1,6 +1,5 @@
 const MenuBtn = document.getElementById("menu");
 const MenuBar = document.getElementById("menuBar");
-
 const CartLength = document.getElementById("cartLength");
 
 MenuBtn.addEventListener("click", function () {
