@@ -48,12 +48,16 @@ const controller = {
     );
   },
   getAll: (req, res) => {
-    db.query("SELECT * FROM `category`", (err, result) => {
-      if (err) throw err;
-      res.render("index", {
-        category: result,
-      });
-    });
+    db.query(
+      "SELECT * FROM `category`; SELECT * FROM `offer`",
+      (err, result) => {
+        if (err) throw err;
+        res.render("index", {
+          category: result[0],
+          offers: result[1],
+        });
+      }
+    );
   },
   editCategory: (req, res) => {
     const { categoryid, name, image } = req.body;
