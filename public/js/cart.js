@@ -22,8 +22,8 @@ function calContainer() {
     return temp;
   }
   function ShipingPrice() {
-    let shiping = 0;
-    return (shiping = getTotal() * 0.1);
+    let shiping = 200;
+    return shiping;
   }
 
   if (cart.length) {
