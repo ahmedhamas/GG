@@ -10,7 +10,6 @@ const controller = {
         if (err) throw err;
         res.send(`
         <script>
-        alert("${name_ar}  has been added") 
           window.history.back();
           location.reload()
         </script>`);
@@ -26,7 +25,6 @@ const controller = {
         if (err) throw err;
         res.send(`
     <script>
-    alert("${name}  has been updated") 
       window.history.back();
       location.reload()
     </script>`);

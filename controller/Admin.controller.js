@@ -161,7 +161,6 @@ const controller = {
         if (err) throw err;
         res.send(`
         <script>
-        alert("${id}  has been deleted") 
           window.history.back();
           location.reload()
         </script>`);
@@ -177,7 +176,6 @@ const controller = {
         if (err) throw err;
         res.send(`
         <script>
-        alert("${id}  has been deleted") 
           window.history.back();
           location.reload()
         </script>`);
@@ -193,7 +191,6 @@ const controller = {
         if (err) throw err;
         res.send(`
         <script>
-        alert("${id}  has been deleted") 
           window.history.back();
           location.reload()
         </script>`);
@@ -209,7 +206,6 @@ const controller = {
         if (err) throw err;
         res.send(`
         <script>
-        alert("${id}  has been deleted") 
           window.history.back();
           location.reload()
         </script>`);
@@ -225,7 +221,6 @@ const controller = {
         if (err) throw err;
         res.send(`
         <script>
-        alert("${id}  has been deleted") 
           window.history.back();
           location.reload()
         </script>`);

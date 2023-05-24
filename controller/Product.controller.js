@@ -10,9 +10,11 @@ const controller = {
       [subcategory, image, name, name_ar, dis, dis_ar, price, instock],
       (err, result) => {
         if (err) throw err;
-        res.json({
-          message: name + " has been made successfully",
-        });
+        res.send(`
+    <script>
+      window.history.back();
+      location.reload()
+    </script>`);
       }
     );
   },

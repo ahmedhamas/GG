@@ -8,10 +8,11 @@ const controller = {
       [name, image, name_ar],
       (err, result) => {
         if (err) throw err;
-        res.json({
-          data: result,
-          message: name + " has been made successfully",
-        });
+        res.send(`
+    <script>
+      window.history.back();
+      location.reload()
+    </script>`);
       }
     );
   },
@@ -64,7 +65,6 @@ const controller = {
         if (err) throw err;
         res.send(`
     <script>
-    alert("${categoryid}  has been updated") 
       window.history.back();
       location.reload()
     </script>`);
