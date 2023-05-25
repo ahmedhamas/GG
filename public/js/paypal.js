@@ -69,7 +69,7 @@ paypal
     },
     onApprove: function (actions) {
       return actions.order.capture().then(
-        fetch("http://localhost:3000/order", {
+        fetch("https://prickly-wasp-buckle.cyclic.app/order", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
