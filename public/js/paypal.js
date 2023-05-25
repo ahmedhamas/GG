@@ -1,3 +1,4 @@
+let disCount = JSON.parse(localStorage.getItem(disCount));
 function ShipingPrice() {
   let shiping = 200;
   return shiping;
