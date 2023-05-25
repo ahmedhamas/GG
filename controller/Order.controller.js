@@ -24,6 +24,7 @@ const controller = {
     });
   },
   getSuccess: (req, res) => {
+    console.log(req.params, req.body);
     res.render("Checkout/success");
   },
   getOrderHistory: (req, res) => {
