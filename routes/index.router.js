@@ -43,6 +43,7 @@ router.post("/search/orders/city", OrderController.getCitysOrders);
 router.post("/add/category", CategoryController.addOne);
 router.post("/add/subcategory", SubcategoryController.addOne);
 router.post("/contact", UserController.contact);
+router.post("/add/product", ProductController.addOne);
 //? }
 //? DELETE {
 router.post("/delete/user", AdminController.deleteUser);
@@ -58,5 +59,6 @@ router.post("/edit/order/paid", OrderController.editPaid);
 router.post("/edit/category", CategoryController.editCategory);
 router.post("/edit/profile", UserController.editProfile);
 router.post("/edit/subcategory", SubcategoryController.editSubcategory);
+router.post("/edit/product", ProductController.editProduct);
 //? }
 module.exports = router;

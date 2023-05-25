@@ -10,7 +10,16 @@ const controller = {
       (err, result) => {
         if (err) throw err;
         if (result[0].isManger === 1) {
-          res.render("admin/products");
+          db.query(
+            "SELECT name_ar FROM category; SELECT name_ar FROM subcategory",
+            (err, result) => {
+              if (err) throw err;
+              res.render("admin/products", {
+                category: result[0],
+                subcategory: result[1],
+              });
+            }
+          );
         } else {
           res.redirect("/");
         }

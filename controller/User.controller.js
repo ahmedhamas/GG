@@ -75,7 +75,6 @@ const controller = {
         if (err) throw err;
         res.send(`
         <script>
-        alert("${id}  has been updated") 
           window.history.back();
           location.reload()
         </script>`);

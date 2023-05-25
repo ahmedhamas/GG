@@ -33,11 +33,40 @@ function search() {
                         <input type='hidden' name='productid' value='${product.id}'/>
                         <button class='delete' type='submit'><i class='bx bx-trash'></i></button>
                       </form>
-                      <p>معرف المستخدم: ${product.id}</p>
-                      <p>اسم المستخدم: ${product.name}</p>
-                      
+                      <p>معرف المنتج: ${product.id}</p>
+                      <p>اسم المنتج: ${product.name_ar}</p>
+                      <p>السعر: ${product.price} ج</p>
+                      <p>في المخزن: ${product.instock}</p>
+                      <p>الوصف: ${product.dis_ar}</p>
+                      <p>القسم:${product.category}</p>
+                      <p>الشركة:${product.subcategory}</p>
                     </div>
-                    </div>`;
+                    </div>
+
+                    <form action="/edit/product" method="post" id="edit">
+                    <div class="input">
+                    <label>معرف المنتج</label>
+                    <input type="text" name="id" required value="${product.id}"/>
+                  </div>                    
+                  <div class="input">
+                      <label>اسم</label>
+                      <input type="text" name="name_ar" required value="${product.name_ar}"/>
+                    </div>
+                    <div class="input">
+                      <label>الوصف</label>
+                      <input type="text" name="dis_ar" required value="${product.dis_ar}" />
+                    </div>
+                    <div class="input">
+                      <label>السعر</label>
+                      <input type="number" name="price" required value="${product.price}" />
+                    </div>
+                    <div class="input">
+                      <label>في المخزن</label>
+                      <input type="number" name="instock" required value="${product.instock}"/>
+                    </div>
+                    <button type="submit">تغير</button>
+                    </form>
+        `;
       })
       .join("");
 

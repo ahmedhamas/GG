@@ -2,12 +2,12 @@ const db = require("../db/index");
 
 const controller = {
   addOne: (req, res) => {
-    const { subcategory, image, name, name_ar, dis, dis_ar, price, instock } =
+    const { category, subcategory, image, name_ar, dis_ar, price, instock } =
       req.body;
 
     db.query(
-      "INSERT INTO `product` (`subcategory`, `image`, `name`, `name_ar`, `dis`, `dis_ar`, `price`, `instock`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-      [subcategory, image, name, name_ar, dis, dis_ar, price, instock],
+      "INSERT INTO `product` (`category`, `subcategory`, `image`, `name_ar`,  `dis_ar`, `price`, `instock`) VALUES (?, ?, ?, ?, ?, ?,?)",
+      [category, subcategory, image, name_ar, dis_ar, price, instock],
       (err, result) => {
         if (err) throw err;
         res.send(`
@@ -55,6 +55,21 @@ const controller = {
           SearchedProduct: result,
           search: Searchquery,
         });
+      }
+    );
+  },
+  editProduct: (req, res) => {
+    const { id, name_ar, dis_ar, price, instock } = req.body;
+    db.query(
+      "UPDATE `product` SET `name_ar` = ?, `dis_ar` = ?, `price` = ?, `instock` =? WHERE `product`.`id` = ?",
+      [name_ar, dis_ar, price, instock, id],
+      (err, result) => {
+        if (err) throw err;
+        res.send(`
+    <script>
+      window.history.back();
+      location.reload()
+    </script>`);
       }
     );
   },

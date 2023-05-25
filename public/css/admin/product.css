@@ -138,3 +138,75 @@ input:focus {
   color: #fff;
   border: none;
 }
+
+#addproduct {
+  background: #fff;
+  width: 300px;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.input input {
+  height: 35px;
+  background: #eee;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+
+.input select {
+  height: 35px;
+  background: #eee;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+
+#addproduct button {
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+#edit {
+  background: #fff;
+  width: 300px;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+#edit .input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin: 2.5px 0;
+}
+
+#edit input {
+  background: #eee;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+
+#edit button {
+  width: 100%;
+  background: #eee;
+  border-radius: 5px;
+  border: none;
+}
