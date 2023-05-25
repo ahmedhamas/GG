@@ -3,17 +3,44 @@ const { v4: uuidv4 } = require("uuid");
 
 const controller = {
   addOne: (req, res) => {
-    const { city, address, phone, phone2, user, total, cart, where } = req.body;
+    const {
+      city,
+      address,
+      phone,
+      phone2,
+      user,
+      total,
+      cart,
+      where,
+      delivered,
+      paid,
+    } = req.body;
     const id = uuidv4();
+    console.log({ city, address, phone, phone2, user, total, cart, where });
     const date = new Date().toISOString().slice(0, 19).replace("T", " ");
     db.query("SELECT * FROM users WHERE id = ?", [user], (err, result) => {
       if (err) throw err;
       if (result.length > 0) {
+        console.log(result);
         db.query(
-          "INSERT INTO `orders` (`id`, `users`, `City`, `Address`, `phone`, `phone2`, `total`, `date`, `cart`, `where`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-          [id, user, city, address, phone, phone2, total, date, cart, where],
+          "INSERT INTO `orders` (`id`, `users`, `City`, `Address`, `phone`, `phone2`, `total`, `date`, `cart`, `where`, `delivered`, `paid`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          [
+            id,
+            user,
+            city,
+            address,
+            phone,
+            phone2,
+            total,
+            date,
+            cart,
+            where,
+            delivered,
+            paid,
+          ],
           (err, result) => {
             if (err) throw err;
+            console.log(result);
             res.send(`<script>
             localStorage.setItem('cart','[]')
             location.replace('/pay/info/success')

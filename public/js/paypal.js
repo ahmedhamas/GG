@@ -1,6 +1,7 @@
 const totalEGP = document.getElementById("total").value;
 const total = totalEGP / 30.9;
 const paypalBtn = document.getElementById("paypal");
+const OrderData = {};
 function values() {
   const city = document.getElementById("city").value;
   const where = document.getElementById("where").value;
@@ -18,10 +19,13 @@ function values() {
     address: address,
     phone: phone,
     phone2: phone2,
-    token: tokenInput,
+    user: tokenInput,
     total: total,
     cart: cart,
+    delivered: 0,
+    paid: 1,
   };
+
   const errs = [];
   if (!city) {
     console.log(errs.length);
@@ -46,6 +50,7 @@ function values() {
   if (!errs.length > 0) {
     ERR.style.display = "none";
     paypalBtn.style.display = "block";
+    Object.assign(OrderData, values);
   }
 }
 
@@ -63,11 +68,18 @@ paypal
       });
     },
     onApprove: function (data, actions) {
-      return actions.order
-        .capture()
-        .then(
-          fetch('',{})
-          location.replace("/pay/info/success"));
+      return actions.order.capture().then(
+        fetch("http://localhost:3000/order", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(OrderData),
+        }).then(
+          localStorage.setItem("cart", "[]"),
+          location.replace("/pay/info/success")
+        )
+      );
     },
   })
   .render("#paypal");
