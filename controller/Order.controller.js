@@ -90,6 +90,9 @@ const controller = {
       }
     );
   },
+  getCreditCard: (req, res) => {
+    res.render("Checkout/paypal");
+  },
 };
 
 module.exports = controller;

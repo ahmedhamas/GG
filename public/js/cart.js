@@ -38,7 +38,7 @@ function calContainer() {
       auth.innerHTML = `<p> من فضلك سجل الدخول لمواصلة <a href='/user/info/login'>الشراء</a> </p>`;
     } else {
       auth.innerHTML = ` <p class='checkoutBtn'><a href='/pay/info/cash_on_delivery'>الدفع عند الاستلام</a></p>
-        <p class='checkoutBtn'><a href='/pay/info/with_credit_card'>ببطاقة ائتمان</a></p>`;
+        <p class='checkoutBtn'><a href='/pay/info/credit_card'>ببطاقة ائتمان</a></p>`;
     }
   } else {
     const countContainer = document.getElementById("countContainer");
