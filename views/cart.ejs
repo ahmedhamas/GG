@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Cart</title>
+    <script src="/js/cart.js" defer></script>
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
@@ -17,6 +18,87 @@
     <div id="checkoutContainer">
       <div id="countContainer"></div>
     </div>
-    <script src="/js/cart.js"></script>
+    <script>
+      async function Paymob() {
+        let data = {
+          api_key: apiKey,
+        };
+        let request = await fetch("https://accept.paymob.com/api/auth/tokens", {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        let res = await request.json();
+        let token = res.token;
+
+        secStep(token);
+      }
+      async function secStep(token) {
+        let data = {
+          auth_token: token,
+          delivery_needed: "false",
+          amount_cents: "100",
+          currency: "EGP",
+          items: [],
+        };
+        let req = await fetch(
+          "https://accept.paymob.com/api/ecommerce/orders",
+          {
+            method: "post",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          }
+        );
+        let res = await req.json();
+
+        thirdStep(token, res.id);
+      }
+
+      async function thirdStep(token, id) {
+        let data = {
+          auth_token: token,
+          amount_cents: "100",
+          expiration: 3600,
+          order_id: id,
+          billing_data: {
+            apartment: "803",
+            email: "claudette09@exa.com",
+            floor: "42",
+            first_name: "Clifford",
+            street: "Ethan Land",
+            building: "8028",
+            phone_number: "+86(8)9135210487",
+            shipping_method: "PKG",
+            postal_code: "01898",
+            city: "Jaskolskiburgh",
+            country: "CR",
+            last_name: "Nicolas",
+            state: "Utah",
+          },
+          currency: "EGP",
+          integration_id: 3837851,
+        };
+
+        let req = await fetch(
+          "https://accept.paymob.com/api/acceptance/payment_keys",
+          {
+            method: "post",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          }
+        );
+
+        let res = await req.json();
+
+        let TheToken = res.token;
+
+        cardPayment(TheToken);
+      }
+      async function cardPayment(TheToken) {
+        iframeUrl = `https://accept.paymob.com/api/acceptance/iframes/761516?payment_token=${TheToken}`;
+        location.replace(iframeUrl);
+      }
+    </script>
   </body>
 </html>
