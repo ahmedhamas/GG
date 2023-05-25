@@ -56,7 +56,7 @@ function values() {
 
 paypal
   .Buttons({
-    createOrder: (data, actions) => {
+    createOrder: (actions) => {
       return actions.order.create({
         purchase_units: [
           {
@@ -67,7 +67,7 @@ paypal
         ],
       });
     },
-    onApprove: function (data, actions) {
+    onApprove: function (actions) {
       return actions.order.capture().then(
         fetch("http://localhost:3000/order", {
           method: "POST",

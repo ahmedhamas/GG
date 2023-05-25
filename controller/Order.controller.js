@@ -118,7 +118,10 @@ const controller = {
     );
   },
   getCreditCard: (req, res) => {
-    res.render("Checkout/paypal", { paypalClientId: process.env.PAYPALCID });
+    res.render("Checkout/paypal", {
+      paypalClientId:
+        "Afnf87UQfWXETCaN1m4HgbPxd1mUZOIn2M3ptKWNp91UOd1Xtbmd4mdHmEDHqoU-RgaGAkReoBlcIijr",
+    });
   },
 };
 
