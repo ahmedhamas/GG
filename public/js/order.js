@@ -26,8 +26,8 @@ function calContainer() {
     return temp;
   }
   function ShipingPrice() {
-    let shiping = 0;
-    return (shiping = getTotal() * 0.1);
+    let shiping = 200;
+    return shiping;
   }
 
   if (cart.length) {
@@ -60,7 +60,8 @@ function calContainer() {
 const myForm = document.getElementById("order");
 
 function ShipingPrice() {
-  return getTotal() * 0.1;
+  let shiping = 200;
+  return shiping;
 }
 function getTotal() {
   let temp = cart.map(function (item) {
@@ -78,11 +79,13 @@ function moreInputs() {
 
   const otherinput = document.getElementById("otherinput");
 
-  otherinput.innerHTML = `<input type='hidden' name='user' value='${JSON.parse(
+  otherinput.innerHTML = `<input id='token' type='hidden' name='user' value='${JSON.parse(
     token
-  )}' /> <input type='hidden' name='total' value='${JSON.parse(
+  )}' /> <input type='hidden' id='total' name='total' value='${JSON.parse(
     getTotal() + ShipingPrice()
-  )}' /> <input type='hidden' name='cart' value='${JSON.stringify(cart)}' />`;
+  )}' /> <input type='hidden' id='cart' name='cart' value='${JSON.stringify(
+    cart
+  )}' />`;
 }
 
 moreInputs();
