@@ -97,7 +97,7 @@
       }
       async function cardPayment(TheToken) {
         iframeUrl = `https://accept.paymob.com/api/acceptance/iframes/761516?payment_token=${TheToken}`;
-        location.replace(iframeUrl);
+        window.open(iframeUrl, "_blank");
       }
     </script>
   </body>
