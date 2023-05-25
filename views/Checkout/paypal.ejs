@@ -6,19 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Credit Card Checkout</title>
     <link rel="stylesheet" href="/css/order.css" />
-    <script src="https://www.paypal.com/sdk/js?client-id=<%= paypalClientId %>"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=Afnf87UQfWXETCaN1m4HgbPxd1mUZOIn2M3ptKWNp91UOd1Xtbmd4mdHmEDHqoU-RgaGAkReoBlcIijr"></script>
     <script src="/js/paypal.js" defer></script>
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
   </head>
-  <body onload="cartLen(), calContainer()">
+  <body onload="cartLen()">
     <%- include('../components/nav') %>
     <div class="container">
-      <div id="checkoutContainer">
-        <div id="countContainer"></div>
-      </div>
       <div id="order">
         <div class="input">
           <select name="city" required id="city">
@@ -55,6 +52,5 @@
         <div id="paypal"></div>
       </div>
     </div>
-    <script src="/js/order.js"></script>
   </body>
 </html>
