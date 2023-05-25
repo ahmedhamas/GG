@@ -1,3 +1,33 @@
+function ShipingPrice() {
+  let shiping = 200;
+  return shiping;
+}
+function getTotal() {
+  let temp = cart.map(function (item) {
+    return parseFloat(item.price * item.quantity);
+  });
+
+  let sum = temp.reduce(function (prev, next) {
+    return prev + next;
+  }, 0);
+
+  return sum * disCount;
+}
+function moreInputs() {
+  let token = JSON.stringify(localStorage.getItem("Token"));
+
+  const otherinput = document.getElementById("otherinput");
+
+  otherinput.innerHTML = `<input id='token' type='hidden' name='user' value='${JSON.parse(
+    token
+  )}' /> <input type='hidden' id='total' name='total' value='${JSON.parse(
+    getTotal() + ShipingPrice()
+  )}' /> <input type='hidden' id='cart' name='cart' value='${JSON.stringify(
+    cart
+  )}' />`;
+}
+moreInputs();
+
 const totalEGP = document.getElementById("total").value;
 const total = totalEGP / 30.9;
 const paypalBtn = document.getElementById("paypal");
