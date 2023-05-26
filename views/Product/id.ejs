@@ -22,7 +22,10 @@
         <p><%= product.dis_ar %></p>
         <p>سعر: <%= product.price %> ج</p>
         <p>في المخزن: <%= product.instock %></p>
-
+        <input type="hidden" id="id" value="<%=product.id%>" />
+        <input type="hidden" id="name" value="<%=product.name_ar%>" />
+        <input type="hidden" id="price" value="<%=product.price%>" />
+        <input type="hidden" id="image" value="<%=product.image%>" />
         <button
           onclick="addItemToCart(parseInt('<%=product.id%>'))"
           class="addToCart"
@@ -33,18 +36,16 @@
       </div>
     </div>
     <script>
-      const id = parseInt("<%= product.id %>");
-      const name = "<%= product.name_ar %>";
-      const instock = parseInt("<%= product.instock %>");
-      const price = parseInt("<%= product.price %>");
-      const image = "<%= product.image %>";
+      const id = document.getElementById("id").value;
+      const name = document.getElementById("name").value;
+      const price = document.getElementById("price").value;
+      const image = document.getElementById("image").value;
       const quantity = 1;
 
       let product = {
         id: id,
         name: name,
         price: price,
-        instock: instock,
         image: image,
         quantity: quantity,
       };

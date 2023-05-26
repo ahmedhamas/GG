@@ -104,7 +104,7 @@ function removeItemFormCart(productId) {
 function incQuantity(productId, quantity) {
   for (let product of cart) {
     if (product.id == productId) {
-      if (product.instock == product.quantity) {
+      if (20 == product.quantity) {
         product.quantity != quantity;
       } else {
         product.quantity = quantity;

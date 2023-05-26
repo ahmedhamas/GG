@@ -2,10 +2,11 @@ const db = require("../db/index");
 
 const controller = {
   addOne: (req, res) => {
-    const { name, image, name_ar } = req.body;
+    const { image, name_ar } = req.body;
+    console.log(image);
     db.query(
-      "INSERT INTO `category` (`name`, `image`, `name_ar`) VALUES (?, ?, ?)",
-      [name, image, name_ar],
+      "INSERT INTO `category` ( `image`, `name_ar`) VALUES ( ?, ?)",
+      [image, name_ar],
       (err, result) => {
         if (err) throw err;
         res.send(`
