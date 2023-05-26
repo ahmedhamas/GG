@@ -2,9 +2,9 @@ const db = require("../db/index");
 
 const controller = {
   addOne: (req, res) => {
-    const { category, subcategory, image, name_ar, dis_ar, price, instock } =
+    const { category, subcategory, name_ar, dis_ar, price, instock, image } =
       req.body;
-
+    console.log();
     db.query(
       "INSERT INTO `product` (`category`, `subcategory`, `image`, `name_ar`,  `dis_ar`, `price`, `instock`) VALUES (?, ?, ?, ?, ?, ?,?)",
       [category, subcategory, image, name_ar, dis_ar, price, instock],

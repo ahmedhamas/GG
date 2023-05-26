@@ -23,7 +23,7 @@
         </form>
         <div id="result"></div>
       </div>
-      <form action="/add/product" method="post" id="addproduct">
+      <form style="margin-top: 25px" id="addproduct">
         <div class="input">
           <select name="category" required>
             <option value="" selected disabled>القسم</option>
@@ -40,7 +40,6 @@
             <% }) %>
           </select>
         </div>
-        <input type="hidden" name="image" value="/" />
         <div class="input">
           <label>اسم</label>
           <input type="text" name="name_ar" required />
@@ -57,7 +56,7 @@
           <label>في المخزن</label>
           <input type="number" name="instock" required />
         </div>
-        <button type="submit"><i class="bx bxs-folder-plus"></i></button>
+        <input type="file" onchange="imageUploaded()" id="image" />
       </form>
     </div>
     <script src="/js/admin/products.js"></script>
