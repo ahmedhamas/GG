@@ -105,7 +105,7 @@ function imageUploaded() {
 
 function displayString(imageBase64Stringsep) {
   console.log("Base64String about to be printed");
-  const myForm = document.getElementById("addform");
+  const myForm = document.getElementById("addproduct");
   const data = imageBase64Stringsep;
 
   const formData = new FormData(myForm);
