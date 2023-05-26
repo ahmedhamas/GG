@@ -43,7 +43,7 @@ input:focus {
   height: 100px;
 }
 
-#editform {
+.editform {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,7 +54,7 @@ input:focus {
   width: 280px;
 }
 
-#editform input,
+.editform input,
 button {
   margin: 10px 0;
   width: 100%;

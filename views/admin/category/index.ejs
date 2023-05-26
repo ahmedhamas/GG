@@ -22,39 +22,70 @@
           </form>
           <p>معرف:<%= category.id %></p>
           <p>الاسم: <%= category.name_ar %></p>
-          <p>مسار الصورة :<%= category.image %></p>
           <img src="<%= category.image %>" />
         </div>
-        <form action="/edit/category" method="post" id="editform">
+        <form action="/edit/category" method="post" class="editform">
           <input type="hidden" name="categoryid" value="<%= category.id %>" />
           <input type="text" name="name" value="<%= category.name_ar %>" />
-          <input type="text" name="image" value="<%= category.image %>" />
           <button type="submit">تغير</button>
         </form>
+
+        <div class="addImg"></div>
         <% }) %>
       </div>
       <form
-        style="margin-top: 25px"
+        style="margin: 25px 0"
         action="/add/category"
         method="post"
-        id="editform"
+        class="editform"
+        id="addform"
       >
-        <input type="text" name="name_ar" />
-        <input type="text" name="image" placeholder="image url" />
-        <button><i class="bx bx-folder-plus"></i></button>
+        <input type="text" name="name_ar" placeholder="الاسم" />
+        <input type="file" id="image" onchange="imageUploaded()" />
       </form>
     </div>
     <script>
-      window.addEventListener("pageshow", function (event) {
-        var historyTraversal =
-          event.persisted ||
-          (typeof window.performance != "undefined" &&
-            window.performance.navigation.type === 2);
-        if (historyTraversal) {
-          // Handle page restore.
-          window.location.reload();
+      let base64String = "";
+
+      function imageUploaded() {
+        var file = document.getElementById("image")["files"][0];
+
+        var reader = new FileReader();
+        console.log("next");
+
+        reader.onload = function () {
+          base64String = reader.result;
+
+          imageBase64Stringsep = base64String;
+
+          // alert(imageBase64Stringsep);
+          displayString(imageBase64Stringsep);
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function displayString(imageBase64Stringsep) {
+        console.log("Base64String about to be printed");
+        const myForm = document.getElementById("addform");
+        const data = imageBase64Stringsep;
+
+        const formData = new FormData(myForm);
+        const searchParams = new URLSearchParams();
+
+        for (const pair of formData) {
+          searchParams.append(pair[0], pair[1]);
         }
-      });
+        searchParams.append("image", data);
+        console.log(searchParams);
+        fetch("http://localhost:3000/add/category", {
+          method: "post",
+          body: searchParams,
+        })
+          .then(location.reload())
+          .catch(function (error) {
+            console.error(error);
+          });
+      }
     </script>
   </body>
 </html>
