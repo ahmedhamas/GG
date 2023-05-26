@@ -39,7 +39,6 @@ function calContainer() {
     } else {
       auth.innerHTML = ` <p class='checkoutBtn'><a href='/pay/info/cash_on_delivery'>الدفع عند الاستلام</a></p>
         <p class='checkoutBtn'><a href='/pay/info/credit_card'>ببطاقة ائتمان</a></p>
-        <button class='checkoutBtn' onclick="Paymob()">paymob</button>
         `;
     }
   } else {
@@ -127,6 +126,3 @@ function dicQuantity(productId) {
   }
   localStorage.setItem("cart", JSON.stringify(cart));
 }
-
-const apiKey =
-  "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TnprNE5EVTFMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuZzd1YzV2RlBqVXFJMUFmaHVjUnZ1YXdqU0EzSm9oVkZ3OTFZTlN1ZWhIZWNrb1ZHbktzMDZRQVIzdUNWaU5oTGxDRGpEblVhMDJoRGczMVVpSnEwLUE=";

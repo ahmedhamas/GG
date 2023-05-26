@@ -118,7 +118,12 @@ const controller = {
     );
   },
   getCreditCard: (req, res) => {
-    res.render("Checkout/paypal");
+    res.render("Checkout/paypal", {
+      paypalClientId: process.env.PAYPAL_CLIENT_ID,
+    });
+  },
+  postPaypal: (req, res) => {
+    console.log(req);
   },
 };
 

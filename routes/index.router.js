@@ -31,6 +31,7 @@ router.get("/info/contact_us/success", UserController.contact_success);
 //? }
 //? POST {
 router.get("/contact", UserController.contact);
+router.get("/paypal", OrderController.postPaypal);
 router.post("/login", UserController.Login);
 router.post("/register", UserController.Register);
 router.post("/order", OrderController.addOne);
