@@ -33,12 +33,7 @@
           </select>
         </div>
         <div class="input">
-          <select name="subcategory" required>
-            <option value="" selected disabled>الشركة</option>
-            <% subcategory.forEach(cate => { %>
-            <option value="<%= cate.name_ar %>"><%= cate.name_ar %></option>
-            <% }) %>
-          </select>
+          <input type="text" name="subcategory" required />
         </div>
         <div class="input">
           <label>اسم</label>
