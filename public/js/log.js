@@ -29,7 +29,7 @@ myForm.addEventListener("submit", function (e) {
         message.innerHTML = res.message;
       } else {
         localStorage.setItem("Token", res.user);
-        localStorage.setItem("State", JSON.stringify(res.StateM));
+        localStorage.setItem("State", JSON.parse(res.StateM));
         location.replace("/");
       }
     })
