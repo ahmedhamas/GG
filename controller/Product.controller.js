@@ -37,7 +37,7 @@ const controller = {
     const { code, value } = req.body;
     console.log(req.body);
     db.query(
-      "INSERT INTO `offer` ( `code`,  `value` ) VALUES (?,?)",
+      "INSERT INTO `promocode` ( `code`,  `value` ) VALUES (?,?)",
       [code, value],
       (err, result) => {
         if (err) throw err;
