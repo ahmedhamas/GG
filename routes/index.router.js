@@ -48,8 +48,8 @@ router.post("/add/category", CategoryController.addOne);
 router.post("/add/subcategory", SubcategoryController.addOne);
 router.post("/contact", UserController.contact);
 router.post("/add/product", ProductController.addOne);
-router.post("/add/offer", ProductController.addOffer);
-router.post("/add/promocode", ProductController.addPromo);
+router.post("/add/to/offer", ProductController.addOffer);
+router.post("/add/to/promocode", ProductController.addPromo);
 //? }
 //? DELETE {
 router.post("/delete/user", AdminController.deleteUser);
