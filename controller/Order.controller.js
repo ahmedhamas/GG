@@ -16,17 +16,15 @@ const controller = {
       paid,
     } = req.body;
     const id = uuidv4();
-    console.log({ city, address, phone, phone2, user, total, cart, where });
     const date = new Date().toISOString().slice(0, 19).replace("T", " ");
     db.query("SELECT * FROM users WHERE id = ?", [user], (err, result) => {
       if (err) throw err;
       if (result.length > 0) {
-        console.log(result);
         db.query(
-          "INSERT INTO `orders` (`id`, `users`, `City`, `Address`, `phone`, `phone2`, `total`, `date`, `cart`, `where`, `delivered`, `paid`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          "INSERT INTO `orders` (`id`, `user`, `City`, `Address`, `phone`, `phone2`, `total`, `date`, `cart`, `where`, `delivered`, `paid`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
           [
             id,
-            user,
+            result[0].email,
             city,
             address,
             phone,
@@ -40,9 +38,9 @@ const controller = {
           ],
           (err, result) => {
             if (err) throw err;
-            console.log(result);
             res.send(`<script>
             localStorage.setItem('cart','[]')
+            localStorage.setItem('disCount', '1')
             location.replace('/pay/info/success')
           </script>`);
           }
@@ -55,21 +53,29 @@ const controller = {
   },
   getOrderHistory: (req, res) => {
     const userId = req.params.userId;
+    console.log(userId);
     const name = {};
-    db.query("SELECT name FROM users WHERE id = ?", [userId], (err, result) => {
-      if (err) throw err;
-      if (result.length > 0) {
-        Object.assign(name, result[0]);
-        db.query(
-          "SELECT * FROM `orders` WHERE users = ?",
-          [userId],
-          (err, result) => {
-            if (err) throw err;
-            res.render("Checkout/orderhistory", { orders: result, name: name });
-          }
-        );
+    db.query(
+      "SELECT name,email FROM users WHERE id = ?",
+      [userId],
+      (err, result) => {
+        if (err) throw err;
+        if (result.length > 0) {
+          Object.assign(name, result[0]);
+          db.query(
+            "SELECT * FROM `orders` WHERE user = ?",
+            [result[0].email],
+            (err, result) => {
+              if (err) throw err;
+              res.render("Checkout/orderhistory", {
+                orders: result,
+                name: name,
+              });
+            }
+          );
+        }
       }
-    });
+    );
   },
   getCash: (req, res) => {
     res.render("Checkout/cash.ejs");
