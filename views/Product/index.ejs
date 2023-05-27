@@ -16,6 +16,18 @@
     <div class="container">
       <% for(var i = 0; i < products.length; i++) { %>
       <div class="Product">
+        <input type="hidden" id="id" value="<%=products[i].id%>" />
+        <input type="hidden" id="name" value="<%=products[i].name_ar%>" />
+        <input type="hidden" id="price" value="<%=products[i].price%>" />
+        <input type="hidden" id="image" value="<%=products[i].image%>" />
+        <button
+          onclick="addItemToCart(parseInt('<%=products[i].id%>'))"
+          class="addToCart"
+          id="outside"
+          type="submit"
+        >
+          <i class="bx bxs-cart-add"></i>
+        </button>
         <a href="/product/show/<%= products[i].id %>">
           <img
             src="<%= products[i].image %>"
@@ -29,5 +41,33 @@
       </div>
       <% } %>
     </div>
+    <script>
+      const id = document.getElementById("id").value;
+      const name = document.getElementById("name").value;
+      const price = document.getElementById("price").value;
+      const image = document.getElementById("image").value;
+      const quantity = 1;
+
+      let product = {
+        id: id,
+        name: name,
+        price: price,
+        image: image,
+        quantity: quantity,
+      };
+      function addItemToCart(productId) {
+        productId = product.id;
+        if (cart.length == 0) {
+          cart.push(product);
+        } else {
+          let res = cart.find((element) => element.id == productId);
+          if (res === undefined) {
+            cart.push(product);
+          }
+        }
+        cartLen();
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+    </script>
   </body>
 </html>

@@ -1,5 +1,4 @@
 const db = require("../db/index");
-
 const controller = {
   addOne: (req, res) => {
     const { category, subcategory, name_ar, dis_ar, price, image } = req.body;
@@ -66,10 +65,20 @@ const controller = {
       [code],
       (err, result) => {
         if (err) throw err;
-
-        res.json({
-          data: result,
-        });
+        if (result.length > 0) {
+          res.send(`
+        <script>
+        localStorage.setItem('disCount', '${result[0].value}')
+        window.history.back();
+        </script>
+        `);
+        } else {
+          res.send(`          
+          <script>
+          window.history.back();        
+          </script>
+          `);
+        }
       }
     );
   },

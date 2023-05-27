@@ -50,6 +50,7 @@ router.post("/contact", UserController.contact);
 router.post("/add/product", ProductController.addOne);
 router.post("/add/to/offer", ProductController.addOffer);
 router.post("/add/to/promocode", ProductController.addPromo);
+router.post("/get/promocode", ProductController.getCode);
 //? }
 //? DELETE {
 router.post("/delete/user", AdminController.deleteUser);

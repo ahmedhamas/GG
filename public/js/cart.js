@@ -28,7 +28,12 @@ function calContainer() {
 
   if (cart.length) {
     const countContainer = document.getElementById("countContainer");
-    countContainer.innerHTML = `<p>المجموع: ${getTotal()} ج</p> 
+    countContainer.innerHTML = `
+        <form action='/get/promocode' method="post" id='promocode'>
+        <input type='text' name='code' placeholder='كود الترويجي' />
+        <button type='submit'>كود الترويجي</button>
+        </form>
+        <p>المجموع: ${getTotal()} ج</p> 
         <p>المنتجات: ( ${getItems()} )</p>
         <p>سعر الشحن: ${ShipingPrice()} ج</p>
         <div id='auth'></div>
@@ -126,3 +131,14 @@ function dicQuantity(productId) {
   }
   localStorage.setItem("cart", JSON.stringify(cart));
 }
+
+window.addEventListener("pageshow", function (event) {
+  var historyTraversal =
+    event.persisted ||
+    (typeof window.performance != "undefined" &&
+      window.performance.navigation.type === 2);
+  if (historyTraversal) {
+    // Handle page restore.
+    window.location.reload();
+  }
+});
