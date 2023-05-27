@@ -277,7 +277,7 @@ const controller = {
     );
   },
   deleteOffer: (req, res) => {
-    const id = req.body.orderid;
+    const id = req.body.id;
     db.query(
       "DELETE FROM `offer` WHERE `offer`.`id` = ?",
       [id],
@@ -292,7 +292,7 @@ const controller = {
     );
   },
   deletePromo: (req, res) => {
-    const id = req.body.orderid;
+    const id = req.body.id;
     db.query(
       "DELETE FROM `promocode` WHERE `promocode`.`id` = ?",
       [id],
