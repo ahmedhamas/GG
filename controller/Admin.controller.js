@@ -86,6 +86,46 @@ const controller = {
       }
     );
   },
+  getPromocode: (req, res) => {
+    const token = req.params.admin;
+    db.query(
+      "SELECT isManger FROM users WHERE id=?",
+      [token],
+      (err, result) => {
+        if (err) throw err;
+        if (result[0].isManger === 1) {
+          db.query(" SELECT * FROM `promocode`", (err, result) => {
+            if (err) throw err;
+            res.render("admin/promo", {
+              Promocode: result,
+            });
+          });
+        } else {
+          res.redirect("/");
+        }
+      }
+    );
+  },
+  getOffer: (req, res) => {
+    const token = req.params.admin;
+    db.query(
+      "SELECT isManger FROM users WHERE id=?",
+      [token],
+      (err, result) => {
+        if (err) throw err;
+        if (result[0].isManger === 1) {
+          db.query("SELECT * FROM `offer`", (err, result) => {
+            if (err) throw err;
+            res.render("admin/offer", {
+              offer: result,
+            });
+          });
+        } else {
+          res.redirect("/");
+        }
+      }
+    );
+  },
   getUser: (req, res) => {
     const token = req.params.admin;
     db.query(
@@ -225,6 +265,36 @@ const controller = {
     const id = req.body.orderid;
     db.query(
       "DELETE FROM `orders` WHERE `orders`.`id` = ?",
+      [id],
+      (err, result) => {
+        if (err) throw err;
+        res.send(`
+        <script>
+          window.history.back();
+          location.reload()
+        </script>`);
+      }
+    );
+  },
+  deleteOffer: (req, res) => {
+    const id = req.body.orderid;
+    db.query(
+      "DELETE FROM `offer` WHERE `offer`.`id` = ?",
+      [id],
+      (err, result) => {
+        if (err) throw err;
+        res.send(`
+        <script>
+          window.history.back();
+          location.reload()
+        </script>`);
+      }
+    );
+  },
+  deletePromo: (req, res) => {
+    const id = req.body.orderid;
+    db.query(
+      "DELETE FROM `promocode` WHERE `promocode`.`id` = ?",
       [id],
       (err, result) => {
         if (err) throw err;

@@ -2,12 +2,43 @@ const db = require("../db/index");
 
 const controller = {
   addOne: (req, res) => {
-    const { category, subcategory, name_ar, dis_ar, price, instock, image } =
-      req.body;
+    const { category, subcategory, name_ar, dis_ar, price, image } = req.body;
     console.log();
     db.query(
-      "INSERT INTO `product` (`category`, `subcategory`, `image`, `name_ar`,  `dis_ar`, `price`, `instock`) VALUES (?, ?, ?, ?, ?, ?,?)",
-      [category, subcategory, image, name_ar, dis_ar, price, instock],
+      "INSERT INTO `product` (`category`, `subcategory`, `image`, `name_ar`,  `dis_ar`, `price` ) VALUES ( ?, ?, ?, ?, ?,?)",
+      [category, subcategory, image, name_ar, dis_ar, price],
+      (err, result) => {
+        if (err) throw err;
+        res.send(`
+    <script>
+      window.history.back();
+      location.reload()
+    </script>`);
+      }
+    );
+  },
+  addOffer: (req, res) => {
+    const { product, image } = req.body;
+    console.log(req.body);
+    db.query(
+      "INSERT INTO `offer` ( `imageUrl`,  `product` ) VALUES (?,?)",
+      [image, product],
+      (err, result) => {
+        if (err) throw err;
+        res.send(`
+    <script>
+      window.history.back();
+      location.reload()
+    </script>`);
+      }
+    );
+  },
+  addPromo: (req, res) => {
+    const { code, value } = req.body;
+    console.log(req.body);
+    db.query(
+      "INSERT INTO `offer` ( `code`,  `value` ) VALUES (?,?)",
+      [code, value],
       (err, result) => {
         if (err) throw err;
         res.send(`
@@ -59,10 +90,40 @@ const controller = {
     );
   },
   editProduct: (req, res) => {
-    const { id, name_ar, dis_ar, price, instock } = req.body;
+    const { id, name_ar, dis_ar, price } = req.body;
     db.query(
-      "UPDATE `product` SET `name_ar` = ?, `dis_ar` = ?, `price` = ?, `instock` =? WHERE `product`.`id` = ?",
-      [name_ar, dis_ar, price, instock, id],
+      "UPDATE `product` SET `name_ar` = ?, `dis_ar` = ?, `price` = ? WHERE `product`.`id` = ?",
+      [name_ar, dis_ar, price, id],
+      (err, result) => {
+        if (err) throw err;
+        res.send(`
+    <script>
+      window.history.back();
+      location.reload()
+    </script>`);
+      }
+    );
+  },
+  editOffer: (req, res) => {
+    const { id, product } = req.body;
+    db.query(
+      "UPDATE `offer` SET `product` = ? WHERE `offer`.`id` = ?",
+      [image, product, id],
+      (err, result) => {
+        if (err) throw err;
+        res.send(`
+    <script>
+      window.history.back();
+      location.reload()
+    </script>`);
+      }
+    );
+  },
+  editPromo: (req, res) => {
+    const { id, code, value } = req.body;
+    db.query(
+      "UPDATE `promocode` SET `code` = ?, `value` = ? WHERE `promocode`.`id` = ?",
+      [code, value, id],
       (err, result) => {
         if (err) throw err;
         res.send(`

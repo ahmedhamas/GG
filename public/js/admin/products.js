@@ -36,7 +36,6 @@ function search() {
                       <p>معرف المنتج: ${product.id}</p>
                       <p>اسم المنتج: ${product.name_ar}</p>
                       <p>السعر: ${product.price} ج</p>
-                      <p>في المخزن: ${product.instock}</p>
                       <p>الوصف: ${product.dis_ar}</p>
                       <p>القسم:${product.category}</p>
                       <p>الشركة:${product.subcategory}</p>
@@ -59,10 +58,6 @@ function search() {
                     <div class="input">
                       <label>السعر</label>
                       <input type="number" name="price" required value="${product.price}" />
-                    </div>
-                    <div class="input">
-                      <label>في المخزن</label>
-                      <input type="number" name="instock" required value="${product.instock}"/>
                     </div>
                     <button type="submit">تغير</button>
                     </form>

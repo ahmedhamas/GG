@@ -17,10 +17,12 @@ body {
   justify-content: center;
   flex-direction: column;
 }
+
 textarea:focus,
 input:focus {
   outline: none;
 }
+
 .container {
   margin: 20px 0;
   display: flex;
@@ -34,11 +36,12 @@ input:focus {
   margin: 10px;
   border-radius: 5px;
   background: #fff;
+  width: 185px;
 }
 
 .categories img {
-  width: 250px;
-  height: 120px;
+  width: 185px;
+  height: 100px;
   border-radius: 5px;
 }
 
@@ -48,30 +51,38 @@ input:focus {
   text-transform: capitalize;
 }
 
-.categories h3 {
+.categories p {
   width: 100%;
   display: flex;
-  font-size: 15px;
+  font-size: 12.5px;
+  font-weight: 500;
   justify-content: center;
 }
 
-@media (max-width: 750px) {
-  .categories img {
-    width: 175px;
-    height: 150px;
-  }
+.subcategories {
+  margin: 5px;
+  border-radius: 5px;
+  background: #fff;
+  width: 110px;
 }
-@media (max-width: 600px) {
-  .categories img {
-    width: 125px;
-    height: 100px;
-  }
+
+.subcategories img {
+  width: 100%;
+  height: 100px;
+  border-radius: 5px;
 }
-@media (max-width: 450px) {
-  .categories img {
-    width: 100px;
-    height: 75px;
-  }
+
+.subcategories p {
+  width: 100%;
+  display: flex;
+  font-size: 12.5px;
+  font-weight: 500;
+  justify-content: center;
+}
+.subcategories a {
+  color: #333;
+  text-decoration: none;
+  text-transform: capitalize;
 }
 
 .CartContainer {
@@ -163,5 +174,19 @@ input:focus {
 
   .wrapper i:last-child {
     right: -15px;
+  }
+}
+
+@media (max-width: 670px) {
+  .categories {
+    width: 95%;
+  }
+  .categories a {
+    display: flex;
+    align-items: center;
+  }
+  .categories img {
+    width: 100px;
+    height: 75px;
   }
 }

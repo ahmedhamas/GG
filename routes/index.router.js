@@ -23,9 +23,12 @@ router.get("/user/info/admin/:admin", AdminController.getAdmin);
 router.get("/user/info/o_h/:userId", OrderController.getOrderHistory);
 router.get("/user/info/profile/:userId", UserController.getProfile);
 router.get("/admin/panle/users/:admin", AdminController.getUser);
+router.get("/admin/panle/offer/:admin", AdminController.getOffer);
+router.get("/admin/panle/promo/:admin", AdminController.getPromocode);
 router.get("/admin/panle/products/:admin", AdminController.getProducut);
 router.get("/admin/panle/categorys/:admin", AdminController.getCategory);
 router.get("/admin/panle/subcategorys/:admin", AdminController.getSubCategory);
+router.get("/admin/panle/promocode/:admin", AdminController.getPromocode);
 router.get("/admin/panle/orders/:admin", AdminController.getOrders);
 router.get("/info/contact_us/success", UserController.contact_success);
 //? }
@@ -45,6 +48,8 @@ router.post("/add/category", CategoryController.addOne);
 router.post("/add/subcategory", SubcategoryController.addOne);
 router.post("/contact", UserController.contact);
 router.post("/add/product", ProductController.addOne);
+router.post("/add/offer", ProductController.addOffer);
+router.post("/add/promocode", ProductController.addPromo);
 //? }
 //? DELETE {
 router.post("/delete/user", AdminController.deleteUser);
@@ -52,6 +57,8 @@ router.post("/delete/order", AdminController.deleteOrder);
 router.post("/delete/category", AdminController.deleteCategory);
 router.post("/delete/subcategory", AdminController.deleteSubcategory);
 router.post("/delete/product", AdminController.deleteProduct);
+router.post("/delete/offer", AdminController.deleteOffer);
+router.post("/delete/promocode", AdminController.deletePromo);
 //? }
 //? EDIT {
 router.post("/edit/user", UserController.editManger);
@@ -61,5 +68,7 @@ router.post("/edit/category", CategoryController.editCategory);
 router.post("/edit/profile", UserController.editProfile);
 router.post("/edit/subcategory", SubcategoryController.editSubcategory);
 router.post("/edit/product", ProductController.editProduct);
+router.post("/edit/offer", ProductController.editOffer);
+router.post("/edit/promocode", ProductController.editPromo);
 //? }
 module.exports = router;
