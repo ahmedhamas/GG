@@ -151,7 +151,7 @@ const controller = {
       [token],
       (err, result) => {
         if (err) throw err;
-        if (result[0].isManger === 1) {
+        if (result[0].isManger == 1) {
           res.render("admin");
         } else {
           res.redirect("/");
