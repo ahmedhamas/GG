@@ -9,7 +9,7 @@ const controller = {
       [token],
       (err, result) => {
         if (err) throw err;
-        if (result[0].isManger === 1) {
+        if (result[0].isManger == 1) {
           db.query(
             "SELECT name_ar FROM category; SELECT name_ar FROM subcategory",
             (err, result) => {
@@ -33,7 +33,7 @@ const controller = {
       [token],
       (err, result) => {
         if (err) throw err;
-        if (result[0].isManger === 1) {
+        if (result[0].isManger == 1) {
           db.query("SELECT * FROM orders", (err, result) => {
             if (err) throw err;
             res.render("admin/orders", { orders: result });
@@ -51,7 +51,7 @@ const controller = {
       [token],
       (err, result) => {
         if (err) throw err;
-        if (result[0].isManger === 1) {
+        if (result[0].isManger == 1) {
           db.query("SELECT * FROM category", (err, result) => {
             if (err) throw err;
             res.render("admin/category", { category: result });
@@ -69,7 +69,7 @@ const controller = {
       [token],
       (err, result) => {
         if (err) throw err;
-        if (result[0].isManger === 1) {
+        if (result[0].isManger == 1) {
           db.query(
             "SELECT * FROM subcategory; SELECT name_ar FROM category",
             (err, result) => {
@@ -93,7 +93,7 @@ const controller = {
       [token],
       (err, result) => {
         if (err) throw err;
-        if (result[0].isManger === 1) {
+        if (result[0].isManger == 1) {
           db.query(" SELECT * FROM `promocode`", (err, result) => {
             if (err) throw err;
             res.render("admin/promo", {
@@ -113,7 +113,7 @@ const controller = {
       [token],
       (err, result) => {
         if (err) throw err;
-        if (result[0].isManger === 1) {
+        if (result[0].isManger == 1) {
           db.query("SELECT * FROM `offer`", (err, result) => {
             if (err) throw err;
             res.render("admin/offer", {
@@ -133,7 +133,7 @@ const controller = {
       [token],
       (err, result) => {
         if (err) throw err;
-        if (result[0].isManger === 1) {
+        if (result[0].isManger == 1) {
           db.query("SELECT * FROM users", (err, result) => {
             if (err) throw err;
             res.render("admin/users", { users: result });
