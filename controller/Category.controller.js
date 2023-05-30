@@ -1,11 +1,26 @@
 const db = require("../db/index");
+const fs = require("fs");
 
 const controller = {
   addOne: (req, res) => {
-    const { image, name_ar } = req.body;
+    const { name_ar, imageName, image } = req.body;
+
+    fs.writeFile(
+      `public/img/category/${imageName}`,
+      image.split("base64,")[1],
+      { encoding: "base64" },
+      function (err) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(`${imageName} is created`);
+        }
+      }
+    );
+    const imageUrl = `/img/category/${imageName}`;
     db.query(
       "INSERT INTO `category` ( `image`, `name_ar`) VALUES ( ?, ?)",
-      [image, name_ar],
+      [imageUrl, name_ar],
       (err, result) => {
         if (err) throw err;
         res.send(`
